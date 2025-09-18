@@ -102,6 +102,50 @@
 }
 
 
+  /* ===== Hero bubbles ===== */
+.bubbles{
+  position:absolute; inset:0; z-index:2; pointer-events:none;
+}
+.bubble{
+  position:absolute; left:var(--x); top:var(--y);
+  width:var(--size); height:var(--size);
+  transform:translate(-50%,-50%);
+  border-radius:50%; overflow:hidden; pointer-events:auto;
+  box-shadow: 0 0 22px rgba(61,219,243,.35), inset 0 0 40px rgba(255,255,255,.05);
+  background: radial-gradient(120% 120% at 30% 30%, rgba(255,255,255,.16), rgba(143,126,251,.08) 50%, rgba(61,219,243,.05) 70%, transparent 80%);
+  backdrop-filter: blur(2px);
+  animation: bubbleFloat 10s ease-in-out var(--delay,0s) infinite;
+}
+.bubble video, .bubble img{
+  width:100%; height:100%; object-fit:cover; display:block; filter:saturate(105%) contrast(105%);
+}
+.bubble:hover{ transform:translate(-50%,-50%) scale(1.05); transition:transform .25s ease; }
+
+@keyframes bubbleFloat{
+  0%,100%{ transform:translate(-50%,-52%) }
+  50%    { transform:translate(-50%,-48%) }
+}
+
+/* Subtle parallax on mouse */
+@media (pointer:fine){
+  .bubbles { will-change: transform; }
+}
+
+/* Text / keyword bubble */
+.bubble-text{
+  display:grid; place-items:center; color:#e9f1ff; font-weight:700;
+  text-shadow: 0 0 10px rgba(61,219,243,.45);
+  background: radial-gradient(120% 120% at 30% 30%, rgba(255,255,255,.08), rgba(143,126,251,.06), transparent 70%);
+}
+.bubble-text .word{ font-size: clamp(12px, 2.8vw, 18px); letter-spacing:.3px; }
+
+/* Don’t let bubbles cover CTAs on small screens */
+@media (max-width: 640px){
+  .bubble{ opacity:.9; }
+  .bubble:nth-child(1){ display:none; }
+}
+
+
     /* Infinity */
     .infinity-wrap{position:absolute; inset:0; pointer-events:none; display:grid; place-items:center}
     .infinity{position:relative; width:min(78vmin,820px); height:min(46vmin,480px)}
@@ -219,6 +263,36 @@
     <div class="infinity" data-depth="0.06" id="infinityBox">
       <div class="ring left"></div><div class="ring right"></div>
       <div class="orbit-dot l" id="dotL"></div><div class="orbit-dot r" id="dotR"></div>
+    </div>
+  </div>
+
+    <!-- Floating media bubbles -->
+  <div class="bubbles" aria-hidden="true">
+    <!-- Video bubble #1 -->
+    <div class="bubble" style="--x: 10%; --y: 22%; --size: 280px; --delay: 0s;">
+      <video muted playsinline loop preload="metadata" data-autoplay>
+        <!-- Replace with your clip -->
+        <source src="media/hero1.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <!-- Video bubble #2 -->
+    <div class="bubble" style="--x: 86%; --y: 28%; --size: 200px; --delay: .6s;">
+      <video muted playsinline loop preload="metadata" data-autoplay>
+        <source src="media/hero2.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <!-- Video bubble #3 -->
+    <div class="bubble" style="--x: 18%; --y: 70%; --size: 380px; --delay: 1s;">
+      <video muted playsinline loop preload="metadata" data-autoplay>
+        <source src="media/hero3.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <!-- Keyword / text bubble (no video) -->
+    <div class="bubble bubble-text" style="--x: 78%; --y: 72%; --size: 180px; --delay: .2s;">
+      <span class="word" data-words="Games,Augmented Reality, Virtual Reality,Cinematics,Animations,AI Apps">Games</span>
     </div>
   </div>
 
@@ -407,6 +481,45 @@
 
     /* Optional tilt cursor */
     (()=>{const MAX=8; function handle(e){const el=e.currentTarget; const r=el.getBoundingClientRect(); const cx=r.left+r.width/2, cy=r.top+r.height/2; const dx=(e.clientX-cx)/(r.width/2), dy=(e.clientY-cy)/(r.height/2); el.style.transform=`perspective(700px) rotateX(${(-dy*MAX).toFixed(2)}deg) rotateY(${(dx*MAX).toFixed(2)}deg)`;} function reset(e){e.currentTarget.style.transform='perspective(700px)';} document.querySelectorAll('.tilt').forEach(el=>{el.addEventListener('mousemove',handle); el.addEventListener('mouseleave',reset);});})();
+  
+  /* ===== Hero bubbles: autoplay control + parallax + text cycle ===== */
+(function(){
+  const container = document.querySelector('.bubbles');
+  if(!container) return;
+
+  // Light parallax on mouse (desktop only)
+  if (matchMedia('(pointer:fine)').matches){
+    window.addEventListener('mousemove', e=>{
+      const cx = innerWidth/2, cy = innerHeight/2;
+      const dx = (e.clientX - cx)/cx, dy = (e.clientY - cy)/cy;
+      container.style.transform = `translate(${dx*-6}px, ${dy*-4}px)`;
+    });
+  }
+
+  // Autoplay/pause videos when in view
+  const vids = [...container.querySelectorAll('video[data-autoplay]')];
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(({isIntersecting,target})=>{
+      if(isIntersecting){ target.play().catch(()=>{}); }
+      else { target.pause(); }
+    });
+  },{ root:null, threshold:.15 });
+  vids.forEach(v=>io.observe(v));
+
+  // Keyword bubble cycler
+  const w = container.querySelector('.bubble-text .word');
+  if(w){
+    const words = (w.dataset.words||'').split(',').map(s=>s.trim()).filter(Boolean);
+    let i = 0;
+    setInterval(()=>{
+      i = (i+1)%words.length;
+      w.style.opacity = 0;
+      setTimeout(()=>{ w.textContent = words[i]; w.style.opacity = 1; }, 140);
+    }, 1600);
+  }
+})();
+
+
   </script>
 </body>
 </html>
