@@ -258,6 +258,69 @@
       transition:transform .25s ease, filter .25s ease;
     }
     .sticky-cta:hover{filter:brightness(1.1); transform:translateY(-2px)}
+  
+
+  /* ---------- Mobile nav ---------- */
+.nav-toggle{
+  display:none; appearance:none; border:0; background:transparent; color:#e9f1ff;
+  font-size:26px; line-height:1; padding:6px 10px; border-radius:8px;
+}
+.nav-links{ display:flex; gap:clamp(12px,3vw,28px); align-items:center; }
+
+@media (max-width: 860px){
+  .nav{ padding:14px 16px; }
+  .nav-toggle{ display:block; }
+  .nav-links{
+    position:fixed; inset:60px 10px auto 10px; right:10px; left:10px;
+    display:grid; gap:10px; padding:14px;
+    background:linear-gradient(180deg, rgba(6,10,23,.95), rgba(6,10,23,.85));
+    border:1px solid var(--edge); border-radius:14px;
+    transform:translateY(-18px); opacity:0; pointer-events:none;
+    transition:.25s ease; z-index:60;
+  }
+  .nav-links.open{ transform:none; opacity:1; pointer-events:auto; }
+  .nav a{ font-size:16px; }
+  .nav .cta{ justify-self:end; }
+}
+
+  /* ---------- Mobile hero bubble layout ---------- */
+  @media (max-width: 640px){
+    /* Keep hero content readable */
+    .headline{ font-size: clamp(34px, 11vw, 52px); }
+    .tagline, .sub{ font-size: clamp(14px, 4.2vw, 16px); max-width: 88vw; }
+
+    /* Bubbles: smaller, ring the headline, and don't block taps */
+    .bubbles{ transform:none !important; }
+    .bubble{
+      --size: 104px !important;
+      pointer-events:none;              /* avoid covering CTAs */
+      box-shadow: 0 0 14px rgba(61,219,243,.28), inset 0 0 24px rgba(255,255,255,.05);
+      animation-duration: 8s;
+    }
+
+    /* Reposition each bubble (match your order used) */
+    .bubbles .bubble:nth-child(1){ left: 18%; top: 46%; }
+    .bubbles .bubble:nth-child(2){ left: 50%; top: 26%; }
+    .bubbles .bubble:nth-child(3){ left: 18%; top: 68%; }
+    .bubbles .bubble:nth-child(4){ left: 82%; top: 68%; }
+
+    /* Photo bubble in the parallax: shrink & tuck to corner */
+    .photo-bubble{
+      width: 110px !important; height: 110px !important;
+      right: 35vw !important; bottom: 25vh !important;
+      box-shadow: inset 0 0 40px rgba(255,255,255,.18), 0 0 18px rgba(61,219,243,.28);
+    }
+  }
+
+  /* Slightly bigger phones / small tablets */
+  @media (min-width: 641px) and (max-width: 860px){
+    .bubble{ --size: 110px !important; }
+    .bubbles .bubble:nth-child(1){ left: 20%; top: 28%; }
+    .bubbles .bubble:nth-child(2){ left: 80%; top: 26%; }
+    .bubbles .bubble:nth-child(3){ left: 22%; top: 80%; }
+    .bubbles .bubble:nth-child(4){ left: 78%; top: 70%; }
+  }
+
   </style>
 </head>
 <body>
@@ -275,11 +338,16 @@
 
   <nav class="nav" aria-label="Main">
     <div class="brand"><a href="#home">AnantaSrushti</a></div>
-    <ul>
+
+    <!-- mobile toggle -->
+    <button class="nav-toggle" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
+      ☰
+    </button>
+
+    <ul id="navLinks" class="nav-links">
       <li><a href="#home">Home</a></li>
       <li><a href="#portfolio">Portfolio</a></li>
       <li><a href="#services">Services</a></li>
-      <!--<li><a href="#proof">Proof</a></li>-->
       <li><a href="careers.html">Careers</a></li>
       <li><a href="#contact" class="cta">Contact</a></li>
     </ul>
@@ -517,62 +585,86 @@
     /* Optional tilt cursor */
     (()=>{const MAX=8; function handle(e){const el=e.currentTarget; const r=el.getBoundingClientRect(); const cx=r.left+r.width/2, cy=r.top+r.height/2; const dx=(e.clientX-cx)/(r.width/2), dy=(e.clientY-cy)/(r.height/2); el.style.transform=`perspective(700px) rotateX(${(-dy*MAX).toFixed(2)}deg) rotateY(${(dx*MAX).toFixed(2)}deg)`;} function reset(e){e.currentTarget.style.transform='perspective(700px)';} document.querySelectorAll('.tilt').forEach(el=>{el.addEventListener('mousemove',handle); el.addEventListener('mouseleave',reset);});})();
   
-  /* ===== Hero bubbles: autoplay control + parallax + text cycle ===== */
-(function(){
-  const container = document.querySelector('.bubbles');
-  if(!container) return;
+    /* ===== Hero bubbles: autoplay control + parallax + text cycle ===== */
+  (function(){
+    const container = document.querySelector('.bubbles');
+    if(!container) return;
 
-  // Light parallax on mouse (desktop only)
-  if (matchMedia('(pointer:fine)').matches){
-    window.addEventListener('mousemove', e=>{
-      const cx = innerWidth/2, cy = innerHeight/2;
-      const dx = (e.clientX - cx)/cx, dy = (e.clientY - cy)/cy;
-      container.style.transform = `translate(${dx*-6}px, ${dy*-4}px)`;
+    // Light parallax on mouse (desktop only)
+    if (matchMedia('(pointer:fine)').matches){
+      window.addEventListener('mousemove', e=>{
+        const cx = innerWidth/2, cy = innerHeight/2;
+        const dx = (e.clientX - cx)/cx, dy = (e.clientY - cy)/cy;
+        container.style.transform = `translate(${dx*-6}px, ${dy*-4}px)`;
+      });
+    }
+
+    // Autoplay/pause videos when in view
+    const vids = [...container.querySelectorAll('video[data-autoplay]')];
+    const io = new IntersectionObserver(entries=>{
+      entries.forEach(({isIntersecting,target})=>{
+        if(isIntersecting){ target.play().catch(()=>{}); }
+        else { target.pause(); }
+      });
+    },{ root:null, threshold:.15 });
+    vids.forEach(v=>io.observe(v));
+
+    // Keyword bubble cycler
+    const w = container.querySelector('.bubble-text .word');
+    if(w){
+      const words = (w.dataset.words||'').split(',').map(s=>s.trim()).filter(Boolean);
+      let i = 0;
+      setInterval(()=>{
+        i = (i+1)%words.length;
+        w.style.opacity = 0;
+        setTimeout(()=>{ w.textContent = words[i]; w.style.opacity = 1; }, 140);
+      }, 1600);
+    }
+  })();
+
+  /* Photo bubble cycling images */
+  (() => {
+    const bubble = document.getElementById('photoBubble');
+    if (!bubble) return;
+
+    const images = [
+      'images/photo1.jpg',
+      'images/photo2.jpg',
+      'images/photo3.jpg'
+    ];
+
+    images.forEach((src, i) => {
+      const img = document.createElement('img');
+      img.src = src;
+      img.style.animationDelay = `${i * 3}s`; // stagger start times
+      bubble.appendChild(img);
     });
-  }
+  })();
 
-  // Autoplay/pause videos when in view
-  const vids = [...container.querySelectorAll('video[data-autoplay]')];
-  const io = new IntersectionObserver(entries=>{
-    entries.forEach(({isIntersecting,target})=>{
-      if(isIntersecting){ target.play().catch(()=>{}); }
-      else { target.pause(); }
+
+  /* Mobile nav toggle */
+  (() => {
+    const btn = document.querySelector('.nav-toggle');
+    const list = document.getElementById('navLinks');
+    if(!btn || !list) return;
+
+    const set = (open) => {
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      list.classList.toggle('open', open);
+      document.body.classList.toggle('nav-open', open);
+    };
+
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') !== 'true';
+      set(open);
     });
-  },{ root:null, threshold:.15 });
-  vids.forEach(v=>io.observe(v));
 
-  // Keyword bubble cycler
-  const w = container.querySelector('.bubble-text .word');
-  if(w){
-    const words = (w.dataset.words||'').split(',').map(s=>s.trim()).filter(Boolean);
-    let i = 0;
-    setInterval(()=>{
-      i = (i+1)%words.length;
-      w.style.opacity = 0;
-      setTimeout(()=>{ w.textContent = words[i]; w.style.opacity = 1; }, 140);
-    }, 1600);
-  }
-})();
+    // Close when clicking a link (smooth scroll will still run)
+    list.querySelectorAll('a').forEach(a => a.addEventListener('click', () => set(false)));
 
-/* Photo bubble cycling images */
-(() => {
-  const bubble = document.getElementById('photoBubble');
-  if (!bubble) return;
-
-  const images = [
-    'images/photo1.jpg',
-    'images/photo2.jpg',
-    'images/photo3.jpg',
-    'images/photo4.jpg'
-  ];
-
-  images.forEach((src, i) => {
-    const img = document.createElement('img');
-    img.src = src;
-    img.style.animationDelay = `${i * 4}s`; // stagger start times
-    bubble.appendChild(img);
-  });
-})();
+    // Close on ESC
+    addEventListener('keydown', e => { if(e.key === 'Escape') set(false); });
+  })();
 
 
   </script>
