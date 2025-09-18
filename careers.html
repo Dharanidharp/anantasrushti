@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Careers — AnantaSrushti Pvt. Ltd.</title>
+  <meta name="description" content="Join AnantaSrushti — build Games, XR, Cinematics, and AI tools." />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg-0:#060a17; --bg-1:#0b1026; --fg:#e9f1ff; --muted:#9bb0d6;
+      --accent:#3ddbf3; --accent-2:#8f7efb; --edge: rgba(255,255,255,.08);
+      --glow: drop-shadow(0 0 12px rgba(61,219,243,.65)) drop-shadow(0 0 28px rgba(143,126,251,.45));
+      --reveal-duration: .8s; --reveal-ease: cubic-bezier(.2,.65,.2,1);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; color:var(--fg);
+      background: radial-gradient(1200px 800px at 70% -10%, #10173b00, #10173b99),
+                  linear-gradient(180deg,var(--bg-0),var(--bg-1));
+      font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",Arial,"Noto Sans";
+      overflow-x:hidden
+    }
+    a{color:inherit; text-decoration:none}
+    /* NAV */
+    .nav{
+      position:fixed; inset-inline:0; top:0; z-index:50;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:18px clamp(16px,3vw,40px);
+      backdrop-filter:saturate(140%) blur(8px);
+      background:linear-gradient(180deg,rgba(6,10,23,.75),rgba(6,10,23,.25) 80%,rgba(6,10,23,0));
+      border-bottom:1px solid var(--edge)
+    }
+    .brand{display:flex; align-items:center; gap:12px; font-family:"Space Grotesk"; font-weight:700; letter-spacing:.4px}
+    .brand a{color:white}
+    .nav ul{list-style:none; display:flex; gap: clamp(12px, 3vw, 28px); margin:0; padding:0; align-items:center}
+    .nav a{font-weight:500; color:var(--muted)} .nav a:hover{color:white}
+    .cta{ background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#fff; font-weight:800; padding:12px 18px; border-radius:14px; box-shadow:0 6px 24px rgba(61,219,243,.25), 0 0 0 2px rgba(255,255,255,.08) inset; text-shadow:0 1px 10px rgba(0,0,0,.25) }
+    .section{position:relative; padding: clamp(100px, 14vh, 160px) clamp(18px,4vw,60px)}
+    .section h1,.section h2{font-family:"Space Grotesk"}
+    .section h1{font-size: clamp(34px,6vw,68px); margin:0 0 10px; filter:var(--glow)}
+    .lead{color:var(--muted); margin-top:6px}
+    .grid{display:grid; gap:clamp(14px,2vw,22px)}
+    @media(min-width:900px){ .cols-2{grid-template-columns:1.2fr .8fr} .cols-3{grid-template-columns:repeat(3,1fr)} }
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border:1px solid var(--edge); padding:22px; border-radius:18px; box-shadow: 0 10px 40px rgba(0,0,0,.35)}
+    .job{display:flex; flex-direction:column; gap:6px}
+    .job h3{margin:0}
+    .meta{color:#b8c7ff; font-size:14px}
+    .tag{display:inline-block; padding:4px 8px; border-radius:10px; background:rgba(255,255,255,.08); margin-right:6px; font-size:12px; color:#c9d6ffb0}
+    .btn{border:1px solid rgba(255,255,255,.2); padding:10px 14px; border-radius:12px; color:white; font-weight:600; background:rgba(255,255,255,.03); cursor:pointer}
+    .btn:hover{background:rgba(255,255,255,.08)}
+    .notice{margin-bottom:14px; padding:12px 14px; border-radius:10px; border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.06); color:#dfe8ff}
+    .notice.success{border-color:rgba(61,219,243,.6); background:rgba(61,219,243,.12)}
+    .notice.error{border-color:rgba(255,100,100,.5); background:rgba(255,100,100,.12)}
+    .notice.hidden{display:none}
+    footer{ padding:60px 24px; text-align:center; color:#a7b5df; border-top:1px solid var(--edge); background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.03))}
+    /* background fx */
+    #stars{ position:fixed; inset:0; z-index:-2 }
+
+    /* Animation helpers (same as index) */
+    .reveal { opacity: 0; transform: translateY(18px); filter: none; will-change: transform, opacity; }
+    .reveal.is-visible { opacity: 1; transform: none; transition: opacity var(--reveal-duration) var(--reveal-ease), transform var(--reveal-duration) var(--reveal-ease); }
+    .reveal.fade-up{ transform: translateY(18px) } .reveal.fade-left{ transform: translateX(22px) }
+    .reveal.fade-right{ transform: translateX(-22px) } .reveal.glow-in{ transform: translateY(10px) }
+    .reveal.glow-in.is-visible{ filter: drop-shadow(0 0 18px rgba(61,219,243,.45)) drop-shadow(0 0 36px rgba(143,126,251,.35)) }
+    [data-stagger] > .reveal { transition-delay: calc(var(--stagger, 0.08s) * var(--i, 0)) }
+    .tilt { transform-style: preserve-3d; transform: perspective(700px); transition: transform .25s ease, box-shadow .25s ease }
+    .tilt:hover { box-shadow: 0 18px 60px rgba(0,0,0,.35), 0 0 24px rgba(61,219,243,.22) }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .reveal.is-visible { opacity: 1 !important; transform: none !important; transition: none !important; }
+      .tilt, .tilt:hover { transform: none !important; box-shadow: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="stars" aria-hidden="true"></canvas>
+
+  <nav class="nav">
+    <div class="brand"><a href="index.html">AnantaSrushti</a></div>
+    <ul>
+      <li><a href="index.html#portfolio">Portfolio</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <!--<li><a href="index.html#proof">Proof</a></li>-->
+      <li><a class="cta" href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main class="section">
+    <h1 class="reveal glow-in">Careers</h1>
+    <p class="lead reveal fade-up">Help us build the infinite — games, XR worlds, cinematic animation, and AI-driven pipelines.</p>
+
+    <div class="grid cols-2" style="margin-top:26px">
+      <!-- Openings -->
+      <div class="card reveal fade-right">
+        <h2 style="margin-top:0">Open Positions</h2>
+        <div id="jobsList" class="grid" data-stagger style="--stagger:.07s;"></div>
+        <div id="noJobs" class="notice hidden">No openings at the moment. You can still send us your resume using the form.</div>
+      </div>
+
+      <!-- Application -->
+      <div class="card reveal fade-left">
+        <h2 style="margin-top:0">Apply</h2>
+        <p class="lead" style="margin-top:0">Attach your resume and tell us a bit about yourself.</p>
+        <div id="applyNotice" class="notice hidden" role="status" aria-live="polite"></div>
+
+        <form id="applyForm" autocomplete="off" novalidate>
+          <label> Full Name<br/>
+            <input name="name" required placeholder="Your name" style="width:100%; padding:12px 14px; border-radius:10px; border:1px solid rgba(255,255,255,.18); background:rgba(255,255,255,.04); color:white">
+          </label><br/><br/>
+
+          <label> Email<br/>
+            <input type="email" name="_replyto" required placeholder="you@studio.com" style="width:100%; padding:12px 14px; border-radius:10px; border:1px solid rgba(255,255,255,.18); background:rgba(255,255,255,.04); color:white">
+          </label><br/><br/>
+
+          <label> Role (optional)<br/>
+            <input name="role" id="roleField" placeholder="e.g., Unreal Technical Artist" style="width:100%; padding:12px 14px; border-radius:10px; border:1px solid rgba(255,255,255,.18); background:rgba(255,255,255,.04); color:white">
+          </label><br/><br/>
+
+          <label> Message<br/>
+            <textarea name="message" rows="4" placeholder="Brief intro and key projects" style="width:100%; padding:12px 14px; border-radius:10px; border:1px solid rgba(255,255,255,.18); background:rgba(255,255,255,.04); color:white"></textarea>
+          </label><br/><br/>
+
+          <label> Resume (PDF/DOC, max 10MB)<br/>
+            <input type="file" name="resume" id="resumeInput" required accept=".pdf,.doc,.docx,.zip" style="width:100%; padding:10px; border-radius:10px; border:1px solid rgba(255,255,255,.18); background:rgba(255,255,255,.04); color:white">
+          </label>
+
+          <input type="hidden" name="_subject" id="subjectField" value="Job Application — AnantaSrushti">
+          <button id="applySubmit" class="cta" type="submit" style="border:none; cursor:pointer; margin-top:12px">Submit Application</button>
+          <p style="color:#9bb0d6; font-size:12px; margin-top:10px">You’ll receive an email confirmation after sending.</p>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer>© AnantaSrushti Pvt. Ltd. — <span id="year"></span></footer>
+
+  <script>
+    // Starfield
+    const canvas=document.getElementById('stars'),ctx=canvas.getContext('2d'); let stars=[],W=0,H=0;
+    function resize(){ const dpr=Math.min(2,devicePixelRatio||1); W=canvas.width=Math.floor(innerWidth*dpr); H=canvas.height=Math.floor(innerHeight*dpr); canvas.style.width=innerWidth+'px'; canvas.style.height=innerHeight+'px'; const count=Math.floor((innerWidth*innerHeight)/9000); stars=Array.from({length:count},()=>({x:Math.random()*W,y:Math.random()*H,z:Math.random()*1+0.2,tw:Math.random()*0.8+0.2})); }
+    addEventListener('resize',resize); resize();
+    (function draw(){ ctx.clearRect(0,0,W,H); for(const s of stars){ s.x+=0.05*s.z; if(s.x>W)s.x=0; const a=0.5+Math.sin(performance.now()*0.002*s.tw)*0.3; ctx.globalAlpha=a; ctx.fillStyle='#cfe6ff'; ctx.fillRect(s.x,s.y,1.2*s.z,1.2*s.z);} requestAnimationFrame(draw); })();
+    document.getElementById('year').textContent=new Date().getFullYear();
+
+    // Reveal engine
+    (() => {
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReduced) return;
+      const els = document.querySelectorAll('.reveal');
+      const io = new IntersectionObserver((entries) => {
+        for (const e of entries){
+          if (e.isIntersecting){
+            e.target.classList.add('is-visible');
+            io.unobserve(e.target);
+          }
+        }
+      }, { threshold: 0.18, rootMargin: '0px 0px -40px 0px' });
+      els.forEach(el => io.observe(el));
+    })();
+
+    // Load jobs
+    const jobsList = document.getElementById('jobsList');
+    const noJobs = document.getElementById('noJobs');
+    const roleField = document.getElementById('roleField');
+    const subjectField = document.getElementById('subjectField');
+
+    function renderJob(job, idx){
+      const card = document.createElement('div'); card.className='card job reveal fade-up tilt'; card.style.setProperty('--i', idx||0);
+      const h3 = document.createElement('h3'); h3.textContent = job.title;
+      const meta = document.createElement('div'); meta.className='meta'; meta.textContent = [job.location||'Remote', job.type||'Full-time'].filter(Boolean).join(' • ');
+      const tags = document.createElement('div');
+      (job.tags||[]).forEach(t=>{ const span=document.createElement('span'); span.className='tag'; span.textContent=t; tags.appendChild(span); });
+      const p = document.createElement('p'); p.textContent = job.summary || '';
+      const btn = document.createElement('button'); btn.className='btn'; btn.textContent='Apply';
+      btn.onclick = () => {
+        roleField.value = job.title;
+        subjectField.value = `Application: ${job.title} — AnantaSrushti`;
+        scrollTo({ top: document.getElementById('applyForm').getBoundingClientRect().top + window.scrollY - 100, behavior:'smooth' });
+      };
+      card.append(h3, meta, tags, p, btn);
+      jobsList.appendChild(card);
+    }
+
+    fetch('jobs.json')
+      .then(r => r.json())
+      .then(items => {
+        jobsList.innerHTML = '';
+        if (!items || !items.length) { noJobs.classList.remove('hidden'); return; }
+        noJobs.classList.add('hidden');
+        items.forEach((job, i) => renderJob(job, i));
+      })
+      .catch(() => { noJobs.classList.remove('hidden'); });
+
+    // Application form (AJAX to Formspree — replace endpoint)
+    const applyForm = document.getElementById('applyForm');
+    const applyNotice = document.getElementById('applyNotice');
+    const applySubmit = document.getElementById('applySubmit');
+    const resumeInput = document.getElementById('resumeInput');
+    const FORM_ENDPOINT = "https://formspree.io/f/xkgvlyyn"; // ← replace with your Formspree endpoint
+
+    function showNotice(el, text, type='success'){ el.textContent=text; el.className='notice ' + type; }
+    function hideNotice(el){ el.textContent=''; el.className='notice hidden'; }
+    applyForm.addEventListener('input', () => hideNotice(applyNotice));
+
+    applyForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      hideNotice(applyNotice);
+
+      // Validate resume size (<= 10MB)
+      const file = resumeInput.files[0];
+      if (!file) { showNotice(applyNotice, 'Please attach your resume.', 'error'); return; }
+      if (file.size > 10 * 1024 * 1024) { showNotice(applyNotice, 'File too large. Max 10MB.', 'error'); return; }
+
+      // Visual feedback
+      applySubmit.disabled = true;
+      const oldLabel = applySubmit.textContent;
+      applySubmit.textContent = 'Submitting…';
+
+      try {
+        const data = new FormData(applyForm);
+        const res = await fetch(FORM_ENDPOINT, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' } // prevents redirect
+        });
+
+        if (res.ok) {
+          applyForm.reset();
+          showNotice(applyNotice, 'Thank you! Your application has been received.', 'success');
+        } else {
+          showNotice(applyNotice, 'Oops, something went wrong. Please try again.', 'error');
+        }
+      } catch (err) {
+        showNotice(applyNotice, 'Network error. Please try again.', 'error');
+      } finally {
+        applySubmit.disabled = false;
+        applySubmit.textContent = oldLabel;
+      }
+    });
+
+    // Optional tilt cursor effect
+    (() => {
+      const MAX = 8;
+      function handle(e){
+        const el = e.currentTarget;
+        const r = el.getBoundingClientRect();
+        const cx = r.left + r.width/2;
+        const cy = r.top + r.height/2;
+        const dx = (e.clientX - cx) / (r.width/2);
+        const dy = (e.clientY - cy) / (r.height/2);
+        el.style.transform = `perspective(700px) rotateX(${(-dy*MAX).toFixed(2)}deg) rotateY(${(dx*MAX).toFixed(2)}deg)`;
+      }
+      function reset(e){ e.currentTarget.style.transform = 'perspective(700px)'; }
+      document.addEventListener('mouseover', (e)=>{
+        if (e.target.closest('.tilt')){
+          const el = e.target.closest('.tilt');
+          el.addEventListener('mousemove', handle);
+          el.addEventListener('mouseleave', reset, { once:true });
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
