@@ -145,6 +145,38 @@
   .bubble:nth-child(1){ display:none; }
 }
 
+/* Photo bubble that cycles images */
+.photo-bubble {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: inset 0 0 60px rgba(255, 255, 255, 0.2),
+              0 0 40px rgba(61, 219, 243, 0.4);
+}
+
+/* Inner images */
+.photo-bubble img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1);
+  animation: bubbleCycle 15s infinite;
+}
+
+/* Zoom + fade cycle */
+@keyframes bubbleCycle {
+  0% { opacity: 0; transform: scale(1); }
+  5% { opacity: 1; transform: scale(1.05); }
+  30% { opacity: 1; transform: scale(1.1); }
+  40% { opacity: 0; transform: scale(1.15); }
+  100% { opacity: 0; transform: scale(1.15); }
+}
+
 
     /* Infinity */
     .infinity-wrap{position:absolute; inset:0; pointer-events:none; display:grid; place-items:center}
@@ -269,7 +301,7 @@
     <!-- Floating media bubbles -->
   <div class="bubbles" aria-hidden="true">
     <!-- Video bubble #1 -->
-    <div class="bubble" style="--x: 10%; --y: 22%; --size: 280px; --delay: 0s;">
+    <div class="bubble" style="--x: 25%; --y: 22%; --size: 280px; --delay: 0s;">
       <video muted playsinline loop preload="metadata" data-autoplay>
         <!-- Replace with your clip -->
         <source src="media/hero1.mp4" type="video/mp4">
@@ -277,7 +309,7 @@
     </div>
 
     <!-- Video bubble #2 -->
-    <div class="bubble" style="--x: 86%; --y: 28%; --size: 200px; --delay: .6s;">
+    <div class="bubble" style="--x: 76%; --y: 28%; --size: 200px; --delay: .6s;">
       <video muted playsinline loop preload="metadata" data-autoplay>
         <source src="media/hero2.mp4" type="video/mp4">
       </video>
@@ -291,10 +323,13 @@
     </div>
 
     <!-- Keyword / text bubble (no video) -->
-    <div class="bubble bubble-text" style="--x: 78%; --y: 72%; --size: 180px; --delay: .2s;">
+    <div class="bubble bubble-text" style="--x: 72%; --y: 72%; --size: 180px; --delay: .2s;">
       <span class="word" data-words="Games,Augmented Reality, Virtual Reality,Cinematics,Animations,AI Apps">Games</span>
     </div>
   </div>
+
+      <!-- Photo bubble -->
+    <div class="decor photo-bubble" id="photoBubble" data-depth="0.10" style="right:12vw; bottom:40vh;"></div>
 
   <div class="hero-inner">
     <h1 class="headline glow-anim reveal glow-in">INFINITE<br/>CREATION</h1>
@@ -517,6 +552,26 @@
       setTimeout(()=>{ w.textContent = words[i]; w.style.opacity = 1; }, 140);
     }, 1600);
   }
+})();
+
+/* Photo bubble cycling images */
+(() => {
+  const bubble = document.getElementById('photoBubble');
+  if (!bubble) return;
+
+  const images = [
+    'images/photo1.jpg',
+    'images/photo2.jpg',
+    'images/photo3.jpg',
+    'images/photo4.jpg'
+  ];
+
+  images.forEach((src, i) => {
+    const img = document.createElement('img');
+    img.src = src;
+    img.style.animationDelay = `${i * 4}s`; // stagger start times
+    bubble.appendChild(img);
+  });
 })();
 
 
