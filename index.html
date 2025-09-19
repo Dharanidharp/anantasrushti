@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AnantaSrushti Pvt. Ltd. — Infinite Creation</title>
+  <title>AnantaSrushti Pvt. Ltd.</title>
   <meta name="description" content="AnantaSrushti — Games, AR/VR experiences, cinematic animation, and AI apps." />
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -666,6 +666,33 @@
     addEventListener('keydown', e => { if(e.key === 'Escape') set(false); });
   })();
 
+  // Disable right-click globally
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  });
+
+  // Disable common key shortcuts
+  document.addEventListener('keydown', function(e) {
+    // Prevent F12
+    if (e.key === "F12") {
+      e.preventDefault();
+    }
+
+    // Prevent Ctrl+Shift+I / Ctrl+Shift+J / Ctrl+Shift+C (DevTools)
+    if (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key.toUpperCase())) {
+      e.preventDefault();
+    }
+
+    // Prevent Ctrl+U (view source)
+    if (e.ctrlKey && e.key.toUpperCase() === "U") {
+      e.preventDefault();
+    }
+
+    // Prevent Ctrl+S (save page)
+    if (e.ctrlKey && e.key.toUpperCase() === "S") {
+      e.preventDefault();
+    }
+  });
 
   </script>
 </body>
