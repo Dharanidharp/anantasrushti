@@ -1,0 +1,45 @@
+{
+  "hero_slides": [
+    {
+      "title": "Immersive VR worlds",
+      "subtitle": "Worlds of Narayana",
+      "video_path": "assets/hero3.mp4"
+    },
+    {
+      "title": "Virtual Reality",
+      "subtitle": "Experience Center at temple",
+      "video_path": "assets/hero2.mp4"
+    },
+    {
+      "title": "Tales from Bharata",
+      "subtitle": "Combat Gameplay",
+      "video_path": "assets/hero1.mp4"
+    }
+  ],
+  "moments_gallery": [
+    { "src": "gallery/1.jpeg", "caption": "AR demo to HH Sri Sri Sri Tridandi Chinna Jeeyar Swamy" },
+    { "src": "gallery/2.jpeg", "caption": "AR demo to HH Sri Sri Sri Tridandi Chinna Jeeyar Swamy" },
+    { "src": "gallery/3.jpeg", "caption": "AR demo to HH Sri Sri Sri Tridandi Chinna Jeeyar Swamy" },
+    { "src": "gallery/4.jpeg", "caption": "AR demo to HH Sri Sri Sri Tridandi Chinna Jeeyar Swamy" },
+    { "src": "gallery/5.jpeg", "caption": "VR Experience" },
+    { "src": "gallery/6.jpeg", "caption": "AR app Sadvidya demo at Statue of Equality" },
+    { "src": "gallery/7.jpeg", "caption": "AR app Sadvidya demo at Statue of Equality" },
+    { "src": "gallery/8.jpeg", "caption": "AR app Sadvidya demo at Statue of Equality" },
+    { "src": "gallery/9.jpeg", "caption": "AR app Sadvidya demo at Statue of Equality" },
+    { "src": "gallery/10.jpeg","caption": "AR app Sadvidya demo at Statue of Equality" }
+  ],
+  "youtube_videos": [
+    {
+      "title": "Tales from Bharata - Combat Gameplay",
+      "video_id": "qckMso0fY40" 
+    },
+    {
+      "title": "AI Content Creation - Sundarakanda",
+      "video_id": "M3d-yxooBKI"
+    },
+    {
+      "title": "Augmented Reality Experience at Statue of Equality",
+      "video_id": "ig_AZ-V5_dQ"
+    }
+  ]
+}

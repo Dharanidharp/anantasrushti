@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Srushti GenAI | Coming Soon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Outfit:wght@500;700;900&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#050505',
+                            gold: '#FFD700', 
+                            cyan: '#00F0FF',
+                            purple: '#7B2CBF'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                        cinzel: ['Cinzel', 'serif'] 
+                    },
+                    animation: {
+                        'float-slow': 'float 8s ease-in-out infinite',
+                        'float-medium': 'float 6s ease-in-out infinite',
+                        'float-fast': 'float 4s ease-in-out infinite',
+                        'pulse-glow': 'pulseGlow 3s infinite',
+                        'spin-slow': 'spin 15s linear infinite'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
+                            '50%': { transform: 'translateY(-20px) rotate(5deg)' }
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { textShadow: '0 0 10px rgba(0, 240, 255, 0.2), 0 0 20px rgba(123, 44, 191, 0.2)' },
+                            '50%': { textShadow: '0 0 20px rgba(0, 240, 255, 0.8), 0 0 40px rgba(123, 44, 191, 0.6)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #050505; color: #fff; overflow: hidden; }
+        
+        /* Layer 1: Ancient Sanskrit Background (Blurred) */
+        .ancient-layer {
+            position: absolute;
+            inset: 0;
+            /* Replace this URL with your actual image of Sanskrit text */
+            background-image: url('https://placehold.co/1920x1080/1a0505/333?text=Ancient+Sanskrit+Script+Texture'); 
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            filter: blur(4px);
+            z-index: 0;
+        }
+
+        /* Layer 2: Gradient Overlay */
+        .gradient-overlay {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 50%, transparent 0%, #050505 90%);
+            z-index: 1;
+        }
+
+        /* Layer 3: Tech Symbols */
+        .symbol {
+            position: absolute;
+            color: rgba(0, 240, 255, 0.1);
+            z-index: 2;
+            transition: all 0.5s;
+        }
+        .symbol:hover {
+            color: rgba(0, 240, 255, 0.6);
+            text-shadow: 0 0 15px #00F0FF;
+            transform: scale(1.2);
+        }
+
+    </style>
+</head>
+<body class="antialiased h-screen w-screen relative flex items-center justify-center">
+
+    <div class="ancient-layer"></div>
+    <div class="gradient-overlay"></div>
+
+    <i class="symbol fa-solid fa-atom text-6xl top-[15%] left-[10%] animate-float-slow"></i>
+    <i class="symbol fa-solid fa-microchip text-7xl bottom-[15%] right-[10%] animate-float-medium" style="animation-delay: 1s;"></i>
+    <i class="symbol fa-solid fa-dna text-5xl top-[20%] right-[20%] animate-float-fast text-brand-purple/20" style="animation-delay: 2s;"></i>
+    <i class="symbol fa-solid fa-network-wired text-6xl bottom-[20%] left-[20%] animate-float-slow text-brand-gold/10" style="animation-delay: 0.5s;"></i>
+    <div class="absolute inset-0 flex items-center justify-center z-0 pointer-events-none">
+        <div class="w-[600px] h-[600px] border border-white/5 rounded-full animate-spin-slow border-dashed opacity-20"></div>
+    </div>
+
+
+    <nav class="fixed w-full z-50 top-0 left-0 p-8">
+        <a href="index.html" class="inline-flex items-center gap-2 text-gray-400 hover:text-brand-cyan transition duration-300 group">
+            <div class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:border-brand-cyan group-hover:bg-brand-cyan/10 transition">
+                <i class="fa-solid fa-arrow-left text-xs"></i>
+            </div>
+            <span class="text-sm font-bold uppercase tracking-widest">Back to Main</span>
+        </a>
+    </nav>
+
+
+    <div class="relative z-10 text-center px-6 max-w-4xl">
+        
+        <div class="mb-8 inline-block">
+            <span class="text-brand-cyan/50 text-6xl"><i class="fa-solid fa-infinity"></i></span>
+        </div>
+
+        <h1 class="text-5xl md:text-7xl font-display font-bold leading-tight mb-6 animate-pulse-glow">
+            We are building <br> 
+            <span class="text-white">something exciting.</span>
+        </h1>
+
+        <p class="text-xl md:text-2xl text-gray-400 font-light tracking-wide">
+            Stay tuned...
+        </p>
+
+        <div class="mt-12 h-1 w-32 bg-white/10 mx-auto rounded-full overflow-hidden">
+            <div class="h-full w-1/2 bg-gradient-to-r from-brand-purple to-brand-cyan animate-[shimmer_2s_infinite]"></div>
+        </div>
+
+    </div>
+
+    <style>
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(200%); }
+        }
+    </style>
+    
+    <script>
+         // Disable right-click globally
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // Disable common key shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Prevent F12
+            if (e.key === "F12") {
+            e.preventDefault();
+            }
+
+            // Prevent Ctrl+Shift+I / Ctrl+Shift+J / Ctrl+Shift+C (DevTools)
+            if (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key.toUpperCase())) {
+            e.preventDefault();
+            }
+
+            // Prevent Ctrl+U (view source)
+            if (e.ctrlKey && e.key.toUpperCase() === "U") {
+            e.preventDefault();
+            }
+
+            // Prevent Ctrl+S (save page)
+            if (e.ctrlKey && e.key.toUpperCase() === "S") {
+            e.preventDefault();
+            }
+        });
+    </script>
+
+</body>
+</html>
