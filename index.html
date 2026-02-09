@@ -7,7 +7,7 @@
     
     <link rel="icon" type="image/png" href="logo.png">
 
-        <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-01FDPR1DX1"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
@@ -99,6 +99,18 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Form Inputs Styling */
+        select, input, textarea {
+            background-color: rgba(0,0,0,0.6) !important;
+            border: 1px solid rgba(255,255,255,0.1) !important;
+            color: white !important;
+        }
+        select:focus, input:focus, textarea:focus {
+            border-color: #00F0FF !important;
+            outline: none;
+        }
+        option { background-color: #050505; color: white; }
     </style>
 </head>
 <body class="antialiased">
@@ -113,7 +125,6 @@
             
             <a href="#" class="flex items-center gap-4 group">
                 <img src="logo.png" alt="AnantaSrushti Logo" class="h-12 w-auto object-contain transition transform group-hover:scale-105">
-                
                 <div class="flex flex-col leading-none">
                     <span class="text-2xl font-cinzel font-bold tracking-widest group-hover:text-brand-cyan transition">ANANTA</span>
                     <span class="text-xs font-display font-bold tracking-[0.3em] text-brand-gold">SRUSHTI</span>
@@ -142,7 +153,6 @@
 
     <section id="hero" class="relative min-h-screen flex flex-col pt-32 pb-20">
         <div class="max-w-7xl mx-auto px-6 w-full flex-grow flex flex-col">
-            
             <div class="text-center mb-10 reveal">
                 <div class="inline-flex items-center gap-4 mb-4 opacity-80">
                     <div class="h-[1px] w-12 bg-brand-gold"></div>
@@ -159,13 +169,11 @@
 
             <div class="relative w-full flex-grow reveal delay-200">
                 <div class="w-full h-[60vh] md:h-[70vh] bg-black rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10 relative group">
-                    
                     <div id="hero-video-container" class="w-full h-full relative">
                         <div class="w-full h-full flex items-center justify-center bg-gray-900 text-gray-500 animate-pulse">
                             Loading 8K Assets...
                         </div>
                     </div>
-                    
                     <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-4 z-20">
                         <button id="prev-hero" class="w-14 h-14 bg-black/30 hover:bg-brand-cyan hover:text-black text-white rounded-full flex items-center justify-center border border-white/20 backdrop-blur-md transition hover:scale-110"><i class="fa-solid fa-chevron-left text-xl"></i></button>
                         <button id="next-hero" class="w-14 h-14 bg-black/30 hover:bg-brand-cyan hover:text-black text-white rounded-full flex items-center justify-center border border-white/20 backdrop-blur-md transition hover:scale-110"><i class="fa-solid fa-chevron-right text-xl"></i></button>
@@ -190,30 +198,12 @@
             </div>
             
             <div class="grid grid-cols-2 md:grid-cols-3 gap-y-16 gap-x-8 text-center reveal">
-                <div class="group cursor-default">
-                    <h3 class="text-3xl md:text-5xl font-display font-bold text-gray-600 group-hover:text-white transition duration-500">Unity</h3>
-                    <div class="h-1 w-0 bg-brand-cyan mx-auto mt-4 group-hover:w-12 transition-all duration-500"></div>
-                </div>
-                <div class="group cursor-default">
-                    <h3 class="text-3xl md:text-5xl font-display font-bold text-gray-600 group-hover:text-white transition duration-500">Unreal 5</h3>
-                    <div class="h-1 w-0 bg-brand-cyan mx-auto mt-4 group-hover:w-12 transition-all duration-500"></div>
-                </div>
-                <div class="group cursor-default">
-                    <h3 class="text-3xl md:text-5xl font-display font-bold text-gray-600 group-hover:text-brand-gold transition duration-500">Maya</h3>
-                    <div class="h-1 w-0 bg-brand-gold mx-auto mt-4 group-hover:w-12 transition-all duration-500"></div>
-                </div>
-                <div class="group cursor-default">
-                    <h3 class="text-3xl md:text-5xl font-display font-bold text-gray-600 group-hover:text-white transition duration-500">ZBrush</h3>
-                    <div class="h-1 w-0 bg-brand-purple mx-auto mt-4 group-hover:w-12 transition-all duration-500"></div>
-                </div>
-                <div class="group cursor-default">
-                    <h3 class="text-3xl md:text-5xl font-display font-bold text-gray-600 group-hover:text-[#FF0000] transition duration-500">Adobe</h3>
-                    <div class="h-1 w-0 bg-[#FF0000] mx-auto mt-4 group-hover:w-12 transition-all duration-500"></div>
-                </div>
-                <div class="group cursor-default">
-                    <h3 class="text-3xl md:text-5xl font-display font-bold text-gray-600 group-hover:text-brand-cyan transition duration-500">Gen AI</h3>
-                    <div class="h-1 w-0 bg-brand-cyan mx-auto mt-4 group-hover:w-12 transition-all duration-500"></div>
-                </div>
+                <div class="group cursor-default"><h3 class="text-3xl md:text-5xl font-display font-bold text-gray-600 group-hover:text-white transition duration-500">Unity</h3><div class="h-1 w-0 bg-brand-cyan mx-auto mt-4 group-hover:w-12 transition-all duration-500"></div></div>
+                <div class="group cursor-default"><h3 class="text-3xl md:text-5xl font-display font-bold text-gray-600 group-hover:text-white transition duration-500">Unreal 5</h3><div class="h-1 w-0 bg-brand-cyan mx-auto mt-4 group-hover:w-12 transition-all duration-500"></div></div>
+                <div class="group cursor-default"><h3 class="text-3xl md:text-5xl font-display font-bold text-gray-600 group-hover:text-brand-gold transition duration-500">Maya</h3><div class="h-1 w-0 bg-brand-gold mx-auto mt-4 group-hover:w-12 transition-all duration-500"></div></div>
+                <div class="group cursor-default"><h3 class="text-3xl md:text-5xl font-display font-bold text-gray-600 group-hover:text-white transition duration-500">ZBrush</h3><div class="h-1 w-0 bg-brand-purple mx-auto mt-4 group-hover:w-12 transition-all duration-500"></div></div>
+                <div class="group cursor-default"><h3 class="text-3xl md:text-5xl font-display font-bold text-gray-600 group-hover:text-[#FF0000] transition duration-500">Adobe</h3><div class="h-1 w-0 bg-[#FF0000] mx-auto mt-4 group-hover:w-12 transition-all duration-500"></div></div>
+                <div class="group cursor-default"><h3 class="text-3xl md:text-5xl font-display font-bold text-gray-600 group-hover:text-brand-cyan transition duration-500">Gen AI</h3><div class="h-1 w-0 bg-brand-cyan mx-auto mt-4 group-hover:w-12 transition-all duration-500"></div></div>
             </div>
         </div>
     </section>
@@ -223,7 +213,6 @@
             <div class="mb-12 reveal">
                 <h2 class="text-4xl font-display font-bold">Gallery</h2>
             </div>
-            
             <div id="gallery-display" class="relative w-full aspect-video rounded-xl overflow-hidden border border-white/10 shadow-2xl reveal">
                 <div class="w-full h-full bg-gray-900 animate-pulse"></div>
             </div>
@@ -238,39 +227,92 @@
                     View Channel <i class="fa-solid fa-arrow-right"></i>
                 </a>
             </div>
-
-            <div id="youtube-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-8 gap-y-16 reveal">
-            </div>
+            <div id="youtube-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-8 gap-y-16 reveal"></div>
         </div>
     </section>
 
     <section id="contact" class="py-32 relative">
-        <div class="max-w-3xl mx-auto px-6 text-center reveal">
-            <h2 class="text-5xl font-display font-bold mb-6">Let's Create Together</h2>
-            <p class="text-gray-400 mb-12">Have a vision for a Game, VR experience, or AI tool?</p>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-5xl font-display font-bold mb-4">Let's Create Together</h2>
+                <p class="text-gray-400">Have a vision? Estimate your project or reach out directly.</p>
+            </div>
 
-            <form id="contactForm" action="https://formspree.io/f/xwpndywv" method="POST" class="text-left bg-white/5 p-8 md:p-12 rounded-2xl border border-white/10 backdrop-blur-md">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                    <div>
-                        <label class="block text-xs font-bold uppercase text-gray-500 mb-2">Name</label>
-                        <input type="text" name="name" required class="w-full bg-black/50 border border-white/10 rounded-lg p-3 text-white focus:border-brand-cyan focus:outline-none transition">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold uppercase text-gray-500 mb-2">Email</label>
-                        <input type="email" name="email" required class="w-full bg-black/50 border border-white/10 rounded-lg p-3 text-white focus:border-brand-cyan focus:outline-none transition">
-                    </div>
-                </div>
-                <div class="mb-6">
-                    <label class="block text-xs font-bold uppercase text-gray-500 mb-2">Message</label>
-                    <textarea name="message" rows="4" required class="w-full bg-black/50 border border-white/10 rounded-lg p-3 text-white focus:border-brand-cyan focus:outline-none transition"></textarea>
-                </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 reveal">
                 
-                <button id="contactSubmit" class="w-full py-4 bg-white text-black font-bold rounded-lg hover:bg-brand-cyan transition uppercase tracking-widest text-sm disabled:opacity-50 disabled:cursor-not-allowed">
-                    Send Message
-                </button>
+                <div class="bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-md h-full flex flex-col">
+                    <div class="mb-6 pb-6 border-b border-white/10">
+                        <h3 class="text-2xl font-bold font-display text-white mb-1"><i class="fa-solid fa-calculator text-brand-gold mr-2"></i> Project Estimator</h3>
+                        <p class="text-xs text-gray-400 mt-2">* This figure is an estimate, for a detailed breakdown please contact us.</p>
+                    </div>
 
-                <div id="formNotice" class="mt-4 text-center text-sm font-bold hidden"></div>
-            </form>
+                    <div class="space-y-6 flex-grow">
+                        <div>
+                            <label class="block text-xs font-bold text-brand-cyan uppercase tracking-widest mb-2">Project Category</label>
+                            <select id="calc-category" class="w-full rounded-lg p-3 cursor-pointer">
+                                <option value="">Select Category...</option>
+                                <option value="game">Game Development</option>
+                                <option value="vr_ar">VR / AR Experience</option>
+                                <option value="3d_art">3D Art & Assets</option>
+                                <option value="animation">Animation</option>
+                                <option value="ai">AI Content Creation</option>
+                                <option value="web">Website Development</option>
+                            </select>
+                        </div>
+
+                        <div id="calc-service-group" class="hidden opacity-0 transition-opacity duration-500">
+                            <label class="block text-xs font-bold text-brand-cyan uppercase tracking-widest mb-2">Specific Service</label>
+                            <select id="calc-service" class="w-full rounded-lg p-3 cursor-pointer"></select>
+                        </div>
+
+                        <div id="calc-scope-group" class="hidden opacity-0 transition-opacity duration-500">
+                            <label class="block text-xs font-bold text-brand-cyan uppercase tracking-widest mb-2">Complexity / Scope</label>
+                            <div class="grid grid-cols-3 gap-2">
+                                <button type="button" class="scope-btn p-2 rounded border border-white/10 hover:bg-white/10 text-sm transition" data-multiplier="1">Basic</button>
+                                <button type="button" class="scope-btn p-2 rounded border border-white/10 hover:bg-white/10 text-sm transition" data-multiplier="2">Standard</button>
+                                <button type="button" class="scope-btn p-2 rounded border border-white/10 hover:bg-white/10 text-sm transition" data-multiplier="4">Premium</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="calc-result" class="mt-8 pt-6 border-t border-white/10 hidden">
+                        <p class="text-gray-400 text-xs uppercase tracking-widest mb-1">Estimated Cost</p>
+                        <div class="text-4xl font-bold font-display text-brand-gold mb-4">₹ <span id="price-display">0</span></div>
+                        <p class="text-sm text-gray-300 mb-4">If you like our quote, drop us an email or fill the form.</p>
+                        <a href="mailto:ananta.srushti@gmail.com" class="block text-center w-full py-3 bg-brand-gold text-black font-bold rounded hover:bg-white transition">
+                            Email: ananta.srushti@gmail.com
+                        </a>
+                    </div>
+                </div>
+
+                <form id="contactForm" action="https://formspree.io/f/xwpndywv" method="POST" class="bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-md h-full flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-2xl font-bold font-display text-white mb-6">Send a Message</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-gray-500 mb-2">Name</label>
+                                <input type="text" name="name" required class="w-full rounded-lg p-3 text-white">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-gray-500 mb-2">Email</label>
+                                <input type="email" name="email" required class="w-full rounded-lg p-3 text-white">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-gray-500 mb-2">Message</label>
+                                <textarea name="message" rows="5" required class="w-full rounded-lg p-3 text-white"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6">
+                        <button id="contactSubmit" class="w-full py-4 bg-white text-black font-bold rounded-lg hover:bg-brand-cyan transition uppercase tracking-widest text-sm disabled:opacity-50">
+                            Send Message
+                        </button>
+                        <div id="formNotice" class="mt-4 text-center text-sm font-bold hidden"></div>
+                    </div>
+                </form>
+
+            </div>
         </div>
     </section>
 
@@ -297,7 +339,7 @@
                     if(data.moments_gallery) initGallery(data.moments_gallery);
                     if(data.youtube_videos) initYoutube(data.youtube_videos);
                 })
-                .catch(err => console.error("Server required for JSON:", err));
+                .catch(err => console.error("JSON Error:", err));
 
             // --- HERO VIDEO LOGIC ---
             function initHero(slides) {
@@ -377,6 +419,109 @@
                 }).join('');
             }
 
+            // --- PRICING CALCULATOR LOGIC ---
+            const pricingData = {
+                "game": {
+                    "full_2d": { label: "Full Game (2D)", base: 100000 },
+                    "full_3d": { label: "Full Game (3D)", base: 250000 },
+                    "prototype": { label: "Core Loop Prototype", base: 50000 },
+                    "env_art": { label: "Environment Art", base: 20000 },
+                    "testing": { label: "Game Testing/QA", base: 10000 }
+                },
+                "vr_ar": {
+                    "vr_exp": { label: "VR Experience", base: 50000 },
+                    "ar_app": { label: "AR Application", base: 45000 },
+                    "training": { label: "Training Simulation", base: 60000 }
+                },
+                "3d_art": {
+                    "model": { label: "3D Modeling", base: 10000 },
+                    "texture": { label: "Texturing", base: 5000 },
+                    "rig": { label: "Rigging", base: 5000 }
+                },
+                "animation": {
+                    "basic": { label: "Basic Animation (per min)", base: 15000 },
+                    "mocap": { label: "Mocap Cleanup", base: 20000 }
+                },
+                "ai": {
+                    "shorts": { label: "AI Shorts/Reels", base: 5000 },
+                    "film": { label: "Cinematic Film", base: 25000 },
+                    "ad": { label: "AI Advertising", base: 15000 }
+                },
+                "web": {
+                    "landing": { label: "Landing Page", base: 15000 },
+                    "full": { label: "Full Website", base: 35000 }
+                }
+            };
+
+            const catSelect = document.getElementById('calc-category');
+            const servSelect = document.getElementById('calc-service');
+            const servGroup = document.getElementById('calc-service-group');
+            const scopeGroup = document.getElementById('calc-scope-group');
+            const resultArea = document.getElementById('calc-result');
+            const priceDisplay = document.getElementById('price-display');
+            
+            let currentBasePrice = 0;
+            let currentMultiplier = 1;
+
+            // 1. Category Changed
+            catSelect.addEventListener('change', function() {
+                const cat = this.value;
+                servSelect.innerHTML = '<option value="">Select Service...</option>'; // Reset
+                
+                if(cat && pricingData[cat]) {
+                    const services = pricingData[cat];
+                    for (const [key, val] of Object.entries(services)) {
+                        const option = document.createElement('option');
+                        option.value = val.base;
+                        option.text = val.label;
+                        servSelect.appendChild(option);
+                    }
+                    servGroup.classList.remove('hidden');
+                    setTimeout(() => servGroup.classList.remove('opacity-0'), 50);
+                } else {
+                    servGroup.classList.add('hidden', 'opacity-0');
+                    scopeGroup.classList.add('hidden', 'opacity-0');
+                    resultArea.classList.add('hidden');
+                }
+            });
+
+            // 2. Service Changed
+            servSelect.addEventListener('change', function() {
+                if(this.value) {
+                    currentBasePrice = parseInt(this.value);
+                    scopeGroup.classList.remove('hidden');
+                    setTimeout(() => scopeGroup.classList.remove('opacity-0'), 50);
+                    // Reset multiplier selection
+                    document.querySelectorAll('.scope-btn').forEach(b => {
+                        b.classList.remove('bg-brand-cyan', 'text-black', 'border-transparent');
+                        b.classList.add('border-white/10', 'text-white');
+                    });
+                    resultArea.classList.add('hidden');
+                }
+            });
+
+            // 3. Scope Clicked
+            document.querySelectorAll('.scope-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // UI State
+                    document.querySelectorAll('.scope-btn').forEach(b => {
+                        b.classList.remove('bg-brand-cyan', 'text-black', 'border-transparent');
+                        b.classList.add('border-white/10', 'text-white');
+                    });
+                    this.classList.remove('border-white/10', 'text-white');
+                    this.classList.add('bg-brand-cyan', 'text-black', 'border-transparent');
+
+                    // Calculation
+                    currentMultiplier = parseInt(this.dataset.multiplier);
+                    const total = currentBasePrice * currentMultiplier;
+                    
+                    // Display
+                    priceDisplay.innerText = total.toLocaleString('en-IN');
+                    resultArea.classList.remove('hidden');
+                });
+            });
+
+
             // --- FORMSPREE AJAX HANDLER ---
             const form = document.getElementById("contactForm");
             const submitBtn = document.getElementById("contactSubmit");
@@ -404,7 +549,7 @@
                         notice.classList.remove("hidden");
                     } else {
                         const jsonData = await response.json();
-                        let errorMsg = "Oops! There was a problem submitting your form";
+                        let errorMsg = "Oops! Problem submitting form";
                         if(jsonData.errors) errorMsg = jsonData.errors.map(e => e.message).join(", ");
                         throw new Error(errorMsg);
                     }
@@ -417,12 +562,11 @@
                     submitBtn.disabled = false;
                 }
             }
-
             form.addEventListener("submit", handleSubmit);
 
         });
 
-        // --- SECURITY / DISABLE SHORTCUTS ---
+        // --- SECURITY ---
         document.addEventListener('contextmenu', e => e.preventDefault());
         document.addEventListener('keydown', e => {
             if (e.key === "F12" || 
