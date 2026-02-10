@@ -3,169 +3,486 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Srushti GenAI | Coming Soon</title>
+    <title>Srushti Studio | Enterprise AI Suite</title>
+    
+    <link rel="icon" type="image/png" href="logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Outfit:wght@500;700;900&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        brand: {
-                            dark: '#050505',
-                            gold: '#FFD700', 
-                            cyan: '#00F0FF',
-                            purple: '#7B2CBF'
+                        studio: {
+                            bg: '#09090b',       
+                            panel: '#121215',    
+                            border: '#27272a',   
+                            accent: '#00F0FF',   
+                            purple: '#7B2CBF',
+                            success: '#10b981',
+                            warning: '#f59e0b',
+                            error: '#ef4444',
+                            text: '#e4e4e7',     
+                            muted: '#71717a'     
                         }
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                         display: ['Outfit', 'sans-serif'],
-                        cinzel: ['Cinzel', 'serif'] 
                     },
                     animation: {
-                        'float-slow': 'float 8s ease-in-out infinite',
-                        'float-medium': 'float 6s ease-in-out infinite',
-                        'float-fast': 'float 4s ease-in-out infinite',
-                        'pulse-glow': 'pulseGlow 3s infinite',
-                        'spin-slow': 'spin 15s linear infinite'
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
-                            '50%': { transform: 'translateY(-20px) rotate(5deg)' }
-                        },
-                        pulseGlow: {
-                            '0%, 100%': { textShadow: '0 0 10px rgba(0, 240, 255, 0.2), 0 0 20px rgba(123, 44, 191, 0.2)' },
-                            '50%': { textShadow: '0 0 20px rgba(0, 240, 255, 0.8), 0 0 40px rgba(123, 44, 191, 0.6)' }
-                        }
+                        'spin-slow': 'spin 2s linear infinite'
                     }
                 }
             }
         }
     </script>
     <style>
-        body { background-color: #050505; color: #fff; overflow: hidden; }
-        
-        /* Layer 1: Ancient Sanskrit Background (Blurred) */
-        .ancient-layer {
-            position: absolute;
-            inset: 0;
-            /* Replace this URL with your actual image of Sanskrit text */
-            background-image: url('https://placehold.co/1920x1080/1a0505/333?text=Ancient+Sanskrit+Script+Texture'); 
-            background-size: cover;
-            background-position: center;
-            opacity: 0.15;
-            filter: blur(4px);
-            z-index: 0;
+        body { background-color: #09090b; color: #e4e4e7; overflow: hidden; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #121215; }
+        ::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 3px; }
+        .timeline-track {
+            background-image: linear-gradient(90deg, #27272a 1px, transparent 1px);
+            background-size: 100px 100%;
         }
-
-        /* Layer 2: Gradient Overlay */
-        .gradient-overlay {
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 50% 50%, transparent 0%, #050505 90%);
-            z-index: 1;
+        /* Toast Notification Animation */
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
         }
-
-        /* Layer 3: Tech Symbols */
-        .symbol {
-            position: absolute;
-            color: rgba(0, 240, 255, 0.1);
-            z-index: 2;
-            transition: all 0.5s;
-        }
-        .symbol:hover {
-            color: rgba(0, 240, 255, 0.6);
-            text-shadow: 0 0 15px #00F0FF;
-            transform: scale(1.2);
-        }
-
+        .toast { animation: slideIn 0.3s ease-out forwards; }
     </style>
 </head>
-<body class="antialiased h-screen w-screen relative flex items-center justify-center">
+<body class="flex flex-col h-screen w-screen selection:bg-studio-accent selection:text-black">
 
-    <div class="ancient-layer"></div>
-    <div class="gradient-overlay"></div>
-
-    <i class="symbol fa-solid fa-atom text-6xl top-[15%] left-[10%] animate-float-slow"></i>
-    <i class="symbol fa-solid fa-microchip text-7xl bottom-[15%] right-[10%] animate-float-medium" style="animation-delay: 1s;"></i>
-    <i class="symbol fa-solid fa-dna text-5xl top-[20%] right-[20%] animate-float-fast text-brand-purple/20" style="animation-delay: 2s;"></i>
-    <i class="symbol fa-solid fa-network-wired text-6xl bottom-[20%] left-[20%] animate-float-slow text-brand-gold/10" style="animation-delay: 0.5s;"></i>
-    <div class="absolute inset-0 flex items-center justify-center z-0 pointer-events-none">
-        <div class="w-[600px] h-[600px] border border-white/5 rounded-full animate-spin-slow border-dashed opacity-20"></div>
-    </div>
-
-
-    <nav class="fixed w-full z-50 top-0 left-0 p-8">
-        <a href="index.html" class="inline-flex items-center gap-2 text-gray-400 hover:text-brand-cyan transition duration-300 group">
-            <div class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:border-brand-cyan group-hover:bg-brand-cyan/10 transition">
-                <i class="fa-solid fa-arrow-left text-xs"></i>
+    <header class="h-14 bg-studio-panel border-b border-studio-border flex items-center justify-between px-4 z-50 select-none">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="text-studio-muted hover:text-white transition flex items-center gap-2 text-xs font-bold uppercase tracking-widest border border-studio-border px-3 py-1.5 rounded-full hover:bg-white/5">
+                <i class="fa-solid fa-arrow-left"></i> Exit
+            </a>
+            <div class="h-6 w-[1px] bg-studio-border"></div>
+            <div class="flex flex-col leading-none">
+                <span class="font-display font-bold text-lg tracking-wide text-white">SRUSHTI<span class="text-studio-accent">.STUDIO</span></span>
+                <span class="text-[10px] text-studio-muted uppercase tracking-wider" id="project-name">Project: Untitled_01</span>
             </div>
-            <span class="text-sm font-bold uppercase tracking-widest">Back to Main</span>
-        </a>
-    </nav>
+        </div>
 
+        <div class="flex items-center gap-6">
+            <div class="flex bg-black rounded-lg p-1 border border-studio-border" id="mode-switcher">
+                <button class="mode-btn px-3 py-1 text-xs font-bold rounded bg-studio-border text-white shadow-sm" data-mode="ai-only">AI-Only</button>
+                <button class="mode-btn px-3 py-1 text-xs font-bold rounded text-studio-muted hover:text-white transition" data-mode="blended">Blended</button>
+            </div>
+            <div class="hidden md:flex items-center gap-2 text-[10px] text-green-500 border border-green-900/50 bg-green-900/10 px-3 py-1 rounded-full cursor-help" title="End-to-End Encryption">
+                <i class="fa-solid fa-lock"></i> Secure Environment
+            </div>
+            <button class="bg-studio-accent text-black font-bold px-4 py-1.5 rounded text-sm hover:brightness-110 transition flex items-center gap-2" onclick="app.exportProject()">
+                <i class="fa-solid fa-cloud-arrow-down"></i> Export
+            </button>
+        </div>
+    </header>
 
-    <div class="relative z-10 text-center px-6 max-w-4xl">
+    <div class="flex-1 flex overflow-hidden">
         
-        <div class="mb-8 inline-block">
-            <span class="text-brand-cyan/50 text-6xl"><i class="fa-solid fa-infinity"></i></span>
+        <aside class="w-16 flex flex-col items-center py-4 bg-black border-r border-studio-border gap-4 z-20 select-none">
+            <button onclick="app.setContext('image')" id="btn-image" class="tool-btn active w-10 h-10 rounded-lg flex items-center justify-center text-studio-accent bg-studio-border border border-studio-accent/50 transition">
+                <i class="fa-solid fa-image"></i>
+            </button>
+            <button onclick="app.setContext('video')" id="btn-video" class="tool-btn w-10 h-10 rounded-lg flex items-center justify-center text-studio-muted hover:text-white transition">
+                <i class="fa-solid fa-film"></i>
+            </button>
+            <button onclick="app.setContext('audio')" id="btn-audio" class="tool-btn w-10 h-10 rounded-lg flex items-center justify-center text-studio-muted hover:text-white transition">
+                <i class="fa-solid fa-music"></i>
+            </button>
+            <div class="h-[1px] w-8 bg-studio-border my-2"></div>
+            <button class="tool-btn w-10 h-10 rounded-lg flex items-center justify-center text-studio-muted hover:text-white transition" title="Asset Library">
+                <i class="fa-solid fa-folder-open"></i>
+            </button>
+        </aside>
+
+        <div id="parameters-panel" class="w-80 bg-studio-panel border-r border-studio-border flex flex-col z-10">
+            <div class="p-4 border-b border-studio-border">
+                <h2 id="panel-title" class="font-display font-bold text-xl text-white">Image Gen</h2>
+                <p id="panel-desc" class="text-xs text-studio-muted mt-1">Text-to-Image & Sketch-to-Image</p>
+            </div>
+
+            <div class="flex-1 overflow-y-auto p-4 space-y-6">
+                <div>
+                    <label class="text-xs font-bold text-studio-accent uppercase tracking-wider mb-2 flex justify-between">
+                        <span>Prompt</span>
+                        <i class="fa-solid fa-magic text-[10px] cursor-pointer hover:text-white" title="Enhance Prompt"></i>
+                    </label>
+                    <textarea id="prompt-input" class="w-full bg-black border border-studio-border rounded-lg p-3 text-sm text-white focus:border-studio-accent focus:outline-none resize-none h-32 placeholder-studio-muted" placeholder="Describe your vision..."></textarea>
+                </div>
+
+                <div>
+                    <label class="text-[10px] text-studio-muted uppercase mb-1 block">AI Model</label>
+                    <div class="relative">
+                        <select id="model-selector" class="w-full bg-black border border-studio-border rounded p-2 text-xs text-white focus:border-studio-accent appearance-none cursor-pointer">
+                            </select>
+                        <i class="fa-solid fa-chevron-down absolute right-3 top-2.5 text-xs text-studio-muted pointer-events-none"></i>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="text-[10px] text-studio-muted uppercase mb-1 block">Ratio</label>
+                        <select id="ratio-selector" class="w-full bg-black border border-studio-border rounded p-2 text-xs text-white focus:outline-none">
+                            <option value="16:9">16:9 (Cinema)</option>
+                            <option value="2.35:1">2.35:1 (Film)</option>
+                            <option value="9:16">9:16 (Vertical)</option>
+                            <option value="1:1">1:1 (Square)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-[10px] text-studio-muted uppercase mb-1 block">Style</label>
+                        <select class="w-full bg-black border border-studio-border rounded p-2 text-xs text-white focus:outline-none">
+                            <option>Photorealistic</option>
+                            <option>Anime / 2D</option>
+                            <option>3D Render (Unreal)</option>
+                            <option>Oil Painting</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="video-specifics" class="hidden space-y-4 pt-4 border-t border-studio-border">
+                    <div>
+                        <label class="text-[10px] text-studio-muted uppercase mb-1 block">Motion Bucket</label>
+                        <input type="range" min="1" max="10" value="5" class="w-full h-1 bg-studio-border rounded-lg appearance-none cursor-pointer accent-studio-accent">
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <input type="checkbox" id="loop-video" class="accent-studio-accent">
+                        <label for="loop-video" class="text-xs text-gray-400">Seamless Loop</label>
+                    </div>
+                </div>
+
+                <button onclick="app.generate()" id="generate-btn" class="w-full py-3 bg-gradient-to-r from-studio-purple to-studio-accent text-black font-bold rounded-lg hover:brightness-110 transition shadow-[0_0_15px_rgba(0,240,255,0.2)] flex items-center justify-center gap-2 mt-4">
+                    <i class="fa-solid fa-bolt"></i> <span>Generate Asset</span>
+                </button>
+            </div>
         </div>
 
-        <h1 class="text-5xl md:text-7xl font-display font-bold leading-tight mb-6 animate-pulse-glow">
-            We are building <br> 
-            <span class="text-white">something exciting.</span>
-        </h1>
+        <div class="flex-1 bg-[#050505] relative flex flex-col">
+            <div class="h-10 bg-black/50 border-b border-studio-border flex items-center justify-between px-4 select-none">
+                <div class="text-[10px] text-studio-muted font-mono" id="status-bar">READY</div>
+                <div class="flex gap-3 text-studio-muted text-xs">
+                    <button class="hover:text-white"><i class="fa-solid fa-rotate-left"></i></button>
+                    <button class="hover:text-white"><i class="fa-solid fa-rotate-right"></i></button>
+                    <div class="w-[1px] h-4 bg-studio-border"></div>
+                    <span id="zoom-level">100%</span>
+                </div>
+            </div>
 
-        <p class="text-xl md:text-2xl text-gray-400 font-light tracking-wide">
-            Stay tuned...
-        </p>
+            <div id="stage-area" class="flex-1 p-8 overflow-auto flex items-center justify-center relative bg-[radial-gradient(#1a1a1a_1px,transparent_1px)] [background-size:20px_20px]">
+                
+                <div id="empty-state" class="text-center">
+                    <div class="w-16 h-16 border border-studio-border rounded-xl flex items-center justify-center mx-auto mb-4 text-studio-muted bg-studio-panel">
+                        <i class="fa-solid fa-layer-group text-2xl"></i>
+                    </div>
+                    <h3 class="text-white font-bold text-lg mb-1">Canvas Empty</h3>
+                    <p class="text-studio-muted text-sm max-w-xs mx-auto">Select a tool and model to begin creation.</p>
+                </div>
 
-        <div class="mt-12 h-1 w-32 bg-white/10 mx-auto rounded-full overflow-hidden">
-            <div class="h-full w-1/2 bg-gradient-to-r from-brand-purple to-brand-cyan animate-[shimmer_2s_infinite]"></div>
+                <div id="result-grid" class="hidden w-full max-w-5xl h-full grid grid-cols-2 gap-4 auto-rows-min content-start">
+                    </div>
+
+                <div id="loading-state" class="hidden absolute inset-0 bg-black/80 backdrop-blur-sm flex flex-col items-center justify-center z-50">
+                    <div class="w-12 h-12 border-4 border-studio-border border-t-studio-accent rounded-full animate-spin-slow mb-4"></div>
+                    <p class="text-studio-accent font-mono text-xs uppercase tracking-widest animate-pulse" id="loading-text">Initializing...</p>
+                </div>
+            </div>
+
+            <div class="h-64 bg-studio-panel border-t border-studio-border flex flex-col select-none">
+                <div class="h-8 bg-black/50 border-b border-studio-border flex items-center px-2 gap-3">
+                    <div class="flex gap-1 text-white">
+                        <button class="p-1 hover:bg-white/10 rounded"><i class="fa-solid fa-backward-step text-xs"></i></button>
+                        <button class="p-1 hover:bg-white/10 rounded"><i class="fa-solid fa-play text-xs"></i></button>
+                        <button class="p-1 hover:bg-white/10 rounded"><i class="fa-solid fa-forward-step text-xs"></i></button>
+                    </div>
+                    <span class="text-[10px] text-studio-accent font-mono ml-auto">00:00:00:00</span>
+                </div>
+                <div class="flex-1 overflow-x-auto relative timeline-track p-2 space-y-1" id="timeline-tracks">
+                    <div class="flex h-16 bg-black/30 rounded relative border border-studio-border/50 flex items-center justify-center text-studio-muted text-xs">
+                        Drag generated assets here to sequence
+                    </div>
+                </div>
+            </div>
         </div>
-
     </div>
 
-    <style>
-        @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(200%); }
-        }
-    </style>
-    
+    <div id="toast-container" class="fixed bottom-4 right-4 z-50 flex flex-col gap-2"></div>
+
     <script>
-         // Disable right-click globally
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-        });
+        /**
+         * CONFIGURATION
+         */
+        const Config = {
+            models: {
+                image: [
+                    { id: 'gemini-pro-vision', name: 'Google Gemini Pro Vision' },
+                    { id: 'dall-e-3', name: 'OpenAI DALL-E 3' },
+                    { id: 'midjourney-v6', name: 'Midjourney v6 (Alpha)' },
+                    { id: 'stable-diffusion-xl', name: 'Stable Diffusion XL' }
+                ],
+                video: [
+                    { id: 'google-veo', name: 'Google Veo (Cinema)' },
+                    { id: 'openai-sora', name: 'OpenAI Sora' },
+                    { id: 'kling-ai', name: 'Kuaishou Kling' },
+                    { id: 'runway-gen3', name: 'Runway Gen-3 Alpha' }
+                ],
+                audio: [
+                    { id: 'elevenlabs', name: 'ElevenLabs (Voice)' },
+                    { id: 'suno-ai', name: 'Suno AI (Music)' },
+                    { id: 'google-lyria', name: 'Google Lyria' }
+                ]
+            }
+        };
 
-        // Disable common key shortcuts
-        document.addEventListener('keydown', function(e) {
-            // Prevent F12
-            if (e.key === "F12") {
-            e.preventDefault();
+        /**
+         * STATE STORE
+         */
+        class StateStore {
+            constructor() {
+                this.context = 'image';
+                this.assets = [];
+            }
+        }
+
+        /**
+         * SERVICE LAYER
+         */
+        class GenerationService {
+            async generate(context, prompt, modelId) {
+                // 1. Prepare Data
+                const payload = { context, prompt, model: modelId };
+
+                // 2. Call Backend
+                const response = await fetch('http://localhost:3000/api/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || "Server connection failed");
+                }
+
+                const data = await response.json();
+                return {
+                    id: Date.now(),
+                    type: context,
+                    model: data.model,
+                    url: data.url, 
+                    prompt: prompt
+                };
+            }
+        }
+
+        /**
+         * UI MANAGER
+         */
+        class UIManager {
+            constructor(store, service) {
+                this.store = store;
+                this.service = service;
+                
+                this.els = {
+                    prompt: document.getElementById('prompt-input'),
+                    modelSelect: document.getElementById('model-selector'),
+                    videoControls: document.getElementById('video-specifics'),
+                    resultGrid: document.getElementById('result-grid'),
+                    emptyState: document.getElementById('empty-state'),
+                    loading: document.getElementById('loading-state'),
+                    loadingText: document.getElementById('loading-text'),
+                    btnGenerate: document.getElementById('generate-btn'),
+                    panelTitle: document.getElementById('panel-title'),
+                    timeline: document.getElementById('timeline-tracks')
+                };
+
+                this.init();
             }
 
-            // Prevent Ctrl+Shift+I / Ctrl+Shift+J / Ctrl+Shift+C (DevTools)
-            if (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key.toUpperCase())) {
-            e.preventDefault();
+            init() { this.updateModelList(); }
+
+            setContext(newContext) {
+                this.store.context = newContext;
+                this.highlightSidebar(newContext);
+                this.updateModelList();
+                this.els.panelTitle.innerText = `${newContext.charAt(0).toUpperCase() + newContext.slice(1)} Gen`;
+                
+                if (newContext === 'video') this.els.videoControls.classList.remove('hidden');
+                else this.els.videoControls.classList.add('hidden');
             }
 
-            // Prevent Ctrl+U (view source)
-            if (e.ctrlKey && e.key.toUpperCase() === "U") {
-            e.preventDefault();
+            highlightSidebar(context) {
+                ['image', 'video', 'audio'].forEach(c => {
+                    const btn = document.getElementById(`btn-${c}`);
+                    if(c === context) {
+                        btn.classList.remove('text-studio-muted', 'hover:text-white');
+                        btn.classList.add('bg-studio-border', 'text-studio-accent', 'border', 'border-studio-accent/50');
+                    } else {
+                        btn.classList.add('text-studio-muted', 'hover:text-white');
+                        btn.classList.remove('bg-studio-border', 'text-studio-accent', 'border', 'border-studio-accent/50');
+                    }
+                });
             }
 
-            // Prevent Ctrl+S (save page)
-            if (e.ctrlKey && e.key.toUpperCase() === "S") {
-            e.preventDefault();
+            updateModelList() {
+                const models = Config.models[this.store.context];
+                this.els.modelSelect.innerHTML = models.map(m => `<option value="${m.id}">${m.name}</option>`).join('');
+            }
+
+            async generate() {
+                const prompt = this.els.prompt.value;
+                const model = this.els.modelSelect.value;
+
+                if(!prompt) {
+                    this.showToast("Please enter a prompt first.", "error");
+                    return;
+                }
+
+                this.setLoading(true, `Connecting to ${model}...`);
+
+                try {
+                    const result = await this.service.generate(this.store.context, prompt, model);
+                    this.addAssetToGrid(result);
+                    this.showToast("Generation Successful", "success");
+                } catch (err) {
+                    this.showToast(err.message, "error");
+                } finally {
+                    this.setLoading(false);
+                }
+            }
+
+            setLoading(active, text = "") {
+                if(active) {
+                    this.els.loading.classList.remove('hidden');
+                    this.els.loadingText.innerText = text;
+                    this.els.emptyState.classList.add('hidden');
+                    this.els.resultGrid.classList.add('hidden');
+                    this.els.btnGenerate.disabled = true;
+                    this.els.btnGenerate.classList.add('opacity-50');
+                } else {
+                    this.els.loading.classList.add('hidden');
+                    this.els.resultGrid.classList.remove('hidden');
+                    this.els.btnGenerate.disabled = false;
+                    this.els.btnGenerate.classList.remove('opacity-50');
+                }
+            }
+
+            // --- UPDATED: Add Asset with Download Button ---
+            addAssetToGrid(asset) {
+                const card = document.createElement('div');
+                card.className = "aspect-video bg-black rounded-lg border border-studio-border overflow-hidden relative group cursor-pointer hover:border-studio-accent transition animate-[fadeIn_0.5s_ease-out]";
+                card.innerHTML = `
+                    <img src="${asset.url}" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition">
+                    <div class="absolute top-2 right-2 bg-black/70 backdrop-blur px-2 py-1 rounded text-[9px] text-white font-mono border border-white/10">
+                        ${asset.model.split('-')[0].toUpperCase()}
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition flex gap-2">
+                        <button class="bg-studio-accent text-black text-xs px-2 py-1 rounded font-bold hover:bg-white flex-1" onclick="app.addToTimeline('${asset.model}')">
+                            <i class="fa-solid fa-plus"></i> Add
+                        </button>
+                        <button class="bg-black/50 border border-white/20 text-white text-xs px-2 py-1 rounded hover:bg-white/10" onclick="app.downloadAsset('${asset.url}')" title="Download">
+                            <i class="fa-solid fa-download"></i>
+                        </button>
+                    </div>
+                `;
+                this.els.resultGrid.appendChild(card);
+            }
+
+            // --- NEW: Download Logic ---
+            async downloadAsset(url) {
+                this.showToast("Downloading...", "success");
+                try {
+                    // Try to fetch blob for forced download
+                    const response = await fetch(url);
+                    const blob = await response.blob();
+                    const blobUrl = window.URL.createObjectURL(blob);
+                    
+                    const link = document.createElement('a');
+                    link.href = blobUrl;
+                    // Generate filename
+                    link.download = `srushti_${Date.now()}.${this.store.context === 'video' ? 'mp4' : 'png'}`;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    window.URL.revokeObjectURL(blobUrl);
+                } catch (e) {
+                    // Fallback for CORS issues
+                    console.log("Direct download failed, opening in new tab");
+                    window.open(url, '_blank');
+                }
+            }
+
+            addToTimeline(name) {
+                const trackItem = document.createElement('div');
+                trackItem.className = "flex-shrink-0 w-32 h-16 bg-studio-purple/20 border-l-2 border-studio-purple flex items-center justify-center text-[10px] text-white/80 cursor-grab hover:bg-studio-purple/30 rounded mr-1";
+                trackItem.innerText = name;
+                
+                if(this.els.timeline.innerText.includes("Drag generated")) {
+                    this.els.timeline.innerHTML = '';
+                    this.els.timeline.className = "flex-1 overflow-x-auto relative timeline-track p-2 flex";
+                }
+                
+                this.els.timeline.appendChild(trackItem);
+                this.showToast("Added to Timeline", "success");
+            }
+
+            showToast(msg, type = "success") {
+                const container = document.getElementById('toast-container');
+                const toast = document.createElement('div');
+                const color = type === 'success' ? 'border-studio-success text-studio-success' : 'border-studio-error text-studio-error';
+                const icon = type === 'success' ? 'fa-check-circle' : 'fa-circle-exclamation';
+                
+                toast.className = `toast bg-studio-panel border-l-4 ${color} text-white px-4 py-3 rounded shadow-xl flex items-center gap-3 min-w-[250px]`;
+                toast.innerHTML = `<i class="fa-solid ${icon}"></i> <span class="text-sm font-medium">${msg}</span>`;
+                
+                container.appendChild(toast);
+                setTimeout(() => toast.remove(), 3000);
+            }
+            
+            exportProject() {
+                this.setLoading(true, "Rendering & Packaging...");
+                setTimeout(() => {
+                    this.setLoading(false);
+                    this.showToast("Project Exported Successfully", "success");
+                }, 1500);
+            }
+        }
+
+        /**
+         * MAIN APPLICATION CONTROLLER
+         */
+        class App {
+            constructor() {
+                this.store = new StateStore();
+                this.service = new GenerationService();
+                this.ui = new UIManager(this.store, this.service);
+            }
+
+            // Expose methods to HTML
+            setContext(ctx) { this.ui.setContext(ctx); }
+            generate() { this.ui.generate(); }
+            addToTimeline(name) { this.ui.addToTimeline(name); }
+            downloadAsset(url) { this.ui.downloadAsset(url); } // Exposed here
+            exportProject() { this.ui.exportProject(); }
+        }
+
+        const app = new App();
+
+        // --- SECURITY ---
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('keydown', e => {
+            if (e.key === "F12" || 
+               (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key.toUpperCase())) ||
+               (e.ctrlKey && ["U", "S"].includes(e.key.toUpperCase()))) {
+                e.preventDefault();
             }
         });
     </script>
-
 </body>
 </html>
