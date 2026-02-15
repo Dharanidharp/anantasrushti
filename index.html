@@ -221,13 +221,29 @@
         </div>
     </section>
 
-    <section id="gallery" class="py-32">
+<section id="gallery" class="py-32">
         <div class="max-w-7xl mx-auto px-6">
             <div class="mb-12 reveal">
                 <h2 class="text-4xl font-display font-bold">Gallery</h2>
             </div>
-            <div id="gallery-display" class="relative w-full aspect-video rounded-xl overflow-hidden border border-white/10 shadow-2xl reveal">
-                <div class="w-full h-full bg-gray-900 animate-pulse"></div>
+            
+            <div class="relative w-full aspect-video rounded-xl overflow-hidden border border-white/10 shadow-2xl reveal group">
+                
+                <div id="gallery-display" class="w-full h-full bg-gray-900">
+                    <div class="w-full h-full flex items-center justify-center text-studio-muted animate-pulse">
+                        Loading Gallery...
+                    </div>
+                </div>
+
+                <div class="absolute top-8 right-8 flex gap-4 z-20 opacity-0 group-hover:opacity-100 transition duration-300">
+                    <button id="prev-gallery" class="w-12 h-12 bg-black/30 hover:bg-brand-cyan hover:text-black text-white rounded-full flex items-center justify-center border border-white/20 backdrop-blur-md transition hover:scale-110">
+                        <i class="fa-solid fa-chevron-left text-lg"></i>
+                    </button>
+                    <button id="next-gallery" class="w-12 h-12 bg-black/30 hover:bg-brand-cyan hover:text-black text-white rounded-full flex items-center justify-center border border-white/20 backdrop-blur-md transition hover:scale-110">
+                        <i class="fa-solid fa-chevron-right text-lg"></i>
+                    </button>
+                </div>
+
             </div>
         </div>
     </section>
@@ -410,32 +426,74 @@
                 document.getElementById('next-port').onclick = () => render(idx + 1);
             }
 
-            // --- GALLERY LOGIC ---
+// --- GALLERY LOGIC ---
             function initGallery(images) {
                 const container = document.getElementById('gallery-display');
+                
+                // Select the new buttons we added to the HTML
+                // Note: We use optional chaining (?) or checks in case the elements aren't found initially
+                const prevBtn = document.getElementById('prev-gallery');
+                const nextBtn = document.getElementById('next-gallery');
+                
                 let idx = 0;
                 let interval;
+
                 function showImage(index) {
+                    // Handle wrapping around the array
                     if(index >= images.length) index = 0;
                     if(index < 0) index = images.length - 1;
                     idx = index;
+                    
                     const img = images[idx];
+                    
                     container.innerHTML = `
                         <div class="relative w-full h-full animate-fade">
                             <img src="${img.src}" class="w-full h-full object-cover transition-transform duration-1000">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                            <div class="absolute bottom-8 left-8">
-                                <p class="text-white font-bold text-3xl font-display drop-shadow-lg">${img.caption}</p>
+                            <div class="absolute bottom-8 left-8 pr-20"> <p class="text-white font-bold text-2xl md:text-3xl font-display drop-shadow-lg leading-tight">${img.caption}</p>
                             </div>
                         </div>
                     `;
                 }
-                function start() { interval = setInterval(() => { showImage(idx + 1); }, 4000); }
-                function stop() { clearInterval(interval); }
-                container.addEventListener('mouseenter', stop);
-                container.addEventListener('mouseleave', start);
+
+                function startTimer() {
+                    stopTimer(); // Clear any existing timer first
+                    interval = setInterval(() => {
+                        showImage(idx + 1);
+                    }, 4000); 
+                }
+                
+                function stopTimer() {
+                    if(interval) clearInterval(interval);
+                }
+
+                // --- Event Listeners for Buttons ---
+                // We check if buttons exist (just in case JSON loads before DOM or IDs mismatch)
+                if (prevBtn && nextBtn) {
+                    prevBtn.onclick = (e) => {
+                        e.preventDefault(); // Prevent jump
+                        stopTimer(); // Pause auto-play
+                        showImage(idx - 1);
+                        startTimer(); // Restart auto-play
+                    };
+
+                    nextBtn.onclick = (e) => {
+                        e.preventDefault();
+                        stopTimer();
+                        showImage(idx + 1);
+                        startTimer();
+                    };
+                }
+
+                // Pause on hover over the container
+                // We use the parent of the container to catch hovers on the buttons too
+                const wrapper = container.parentElement;
+                wrapper.addEventListener('mouseenter', stopTimer);
+                wrapper.addEventListener('mouseleave', startTimer);
+
+                // Initial Load
                 showImage(0);
-                start();
+                startTimer();
             }
             
             // --- YOUTUBE LOGIC ---
