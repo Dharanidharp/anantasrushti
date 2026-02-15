@@ -402,28 +402,62 @@
                 document.getElementById('next-land').onclick = () => render(idx + 1);
             }
 
-            // --- PORTRAIT HERO LOGIC (9:16) ---
+// --- PORTRAIT HERO LOGIC (Updated for video_id) ---
             function initPortraitHero(slides) {
                 const container = document.getElementById('hero-portrait-container');
                 let idx = 0;
+
                 function render(i) {
-                    if(i < 0) i = slides.length - 1;
-                    if(i >= slides.length) i = 0;
+                    // Handle wrapping
+                    if (i < 0) i = slides.length - 1;
+                    if (i >= slides.length) i = 0;
                     idx = i;
+                    
                     const slide = slides[idx];
-                    container.innerHTML = `
-                        <video class="w-full h-full object-cover" autoplay muted loop playsinline poster="${slide.poster_path || ''}">
-                            <source src="${slide.video_path}" type="video/mp4">
-                        </video>
-                        <div class="absolute bottom-8 left-0 w-full p-4 bg-gradient-to-t from-black to-transparent z-10">
-                            <h3 class="text-lg font-bold font-display text-white leading-tight">${slide.title}</h3>
-                            <p class="text-brand-purple text-[10px] font-bold uppercase tracking-widest mt-1">${slide.subtitle}</p>
+                    let mediaHTML = '';
+
+                    // CHECK 1: Is there a YouTube ID? (Matches your JSON 'video_id')
+                    if (slide.video_id) {
+                        mediaHTML = `
+                            <iframe 
+                                class="w-full h-full object-cover pointer-events-none" 
+                                src="https://www.youtube.com/embed/${slide.video_id}?autoplay=1&mute=1&controls=0&loop=1&playlist=${slide.video_id}&showinfo=0&modestbranding=1&rel=0" 
+                                frameborder="0" 
+                                allow="autoplay; encrypted-media" 
+                                allowfullscreen>
+                            </iframe>
+                            <div class="absolute inset-0 z-10"></div> 
+                        `;
+                    } 
+                    // CHECK 2: Is there a Local Video Path?
+                    else if (slide.video_path) {
+                        mediaHTML = `
+                            <video class="w-full h-full object-cover" autoplay muted loop playsinline>
+                                <source src="${slide.video_path}" type="video/mp4">
+                            </video>
+                        `;
+                    }
+
+                    // Overlay Content
+                    const overlayHTML = `
+                        <div class="absolute bottom-8 left-0 w-full p-4 bg-gradient-to-t from-black via-black/50 to-transparent z-20 pointer-events-none">
+                            <h3 class="text-lg font-bold font-display text-white leading-tight drop-shadow-md">${slide.title}</h3>
+                            <p class="text-brand-purple text-[10px] font-bold uppercase tracking-widest mt-1 drop-shadow-md">${slide.subtitle || ''}</p>
                         </div>
                     `;
+
+                    container.innerHTML = mediaHTML + overlayHTML;
                 }
+
+                // Initial Render
                 render(0);
-                document.getElementById('prev-port').onclick = () => render(idx - 1);
-                document.getElementById('next-port').onclick = () => render(idx + 1);
+
+                // Attach Click Handlers
+                const prevBtn = document.getElementById('prev-port');
+                const nextBtn = document.getElementById('next-port');
+
+                if (prevBtn) prevBtn.onclick = () => render(idx - 1);
+                if (nextBtn) nextBtn.onclick = () => render(idx + 1);
             }
 
 // --- GALLERY LOGIC ---

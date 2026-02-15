@@ -13,9 +13,28 @@
   ],
   "portrait_slides": [
     {
+      "title": "Sadvidya Chandogya Upanishad",
+      "subtitle": "Unreal Cinematic",
+      "video_id": "Wg5buv6DEl4"
+    },
+    {
       "title": "Virtual Reality",
       "subtitle": "Experience Center at temple",
       "video_path": "assets/hero2.mp4"
+    },
+    {
+      "title": "Mighty Orb Gameplay iOS",
+      "video_id": "u-RPmFF4v24"
+    },
+    {
+      "title": "Journey of the Soul",
+      "subtitle": "Unreal Cinematic",
+      "video_id": "XBjRn-ngFLA"
+    },
+    {
+      "title": "The Eternal Return",
+      "subtitle": "Unreal Cinematic",
+      "video_id": "3gI97S9DH38"
     }
   ],
   "moments_gallery": [
