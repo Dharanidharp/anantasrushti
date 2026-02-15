@@ -6,14 +6,16 @@
       "video_path": "assets/hero3.mp4"
     },
     {
-      "title": "Virtual Reality",
-      "subtitle": "Experience Center at temple",
-      "video_path": "assets/hero2.mp4"
-    },
-    {
       "title": "Tales from Bharata",
       "subtitle": "Combat Gameplay",
       "video_path": "assets/hero1.mp4"
+    }
+  ],
+  "portrait_slides": [
+    {
+      "title": "Virtual Reality",
+      "subtitle": "Experience Center at temple",
+      "video_path": "assets/hero2.mp4"
     }
   ],
   "moments_gallery": [

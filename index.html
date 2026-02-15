@@ -7,14 +7,12 @@
     
     <link rel="icon" type="image/png" href="logo.png">
 
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-01FDPR1DX1"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-01FDPR1DX1');
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-01FDPR1DX1');
     </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -100,7 +98,6 @@
             transform: translateY(0);
         }
 
-        /* Form Inputs Styling */
         select, input, textarea {
             background-color: rgba(0,0,0,0.6) !important;
             border: 1px solid rgba(255,255,255,0.1) !important;
@@ -122,7 +119,6 @@
 
     <nav class="fixed w-full z-50 top-0 left-0 bg-black/80 backdrop-blur-md border-b border-white/5">
         <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
-            
             <a href="#" class="flex items-center gap-4 group">
                 <img src="logo.png" alt="AnantaSrushti Logo" class="h-12 w-auto object-contain transition transform group-hover:scale-105">
                 <div class="flex flex-col leading-none">
@@ -143,7 +139,6 @@
                     <i class="fa-solid fa-microchip"></i>
                     <span>Srushti AI</span>
                 </a>
-
                 <a href="#contact" class="px-6 py-2 bg-white text-black font-bold text-xs uppercase hover:bg-brand-cyan transition shadow-[0_0_15px_rgba(255,255,255,0.3)]">
                     Let's Talk
                 </a>
@@ -153,6 +148,7 @@
 
     <section id="hero" class="relative min-h-screen flex flex-col pt-32 pb-20">
         <div class="max-w-7xl mx-auto px-6 w-full flex-grow flex flex-col">
+            
             <div class="text-center mb-10 reveal">
                 <div class="inline-flex items-center gap-4 mb-4 opacity-80">
                     <div class="h-[1px] w-12 bg-brand-gold"></div>
@@ -168,16 +164,33 @@
             </div>
 
             <div class="relative w-full flex-grow reveal delay-200">
-                <div class="w-full h-[60vh] md:h-[70vh] bg-black rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10 relative group">
-                    <div id="hero-video-container" class="w-full h-full relative">
-                        <div class="w-full h-full flex items-center justify-center bg-gray-900 text-gray-500 animate-pulse">
-                            Loading 8K Assets...
+                
+                <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 h-auto lg:h-[70vh]">
+                    
+                    <div class="lg:col-span-3 relative bg-black rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10 group h-[50vh] lg:h-full">
+                        <div id="hero-landscape-container" class="w-full h-full relative">
+                            <div class="w-full h-full flex items-center justify-center bg-gray-900 text-gray-500 animate-pulse">
+                                Loading Landscape...
+                            </div>
+                        </div>
+                        <div class="absolute top-8 right-8 flex gap-4 z-20">
+                            <button id="prev-land" class="w-10 h-10 bg-black/30 hover:bg-brand-cyan hover:text-black text-white rounded-full flex items-center justify-center border border-white/20 backdrop-blur-md transition hover:scale-110"><i class="fa-solid fa-chevron-left"></i></button>
+                            <button id="next-land" class="w-10 h-10 bg-black/30 hover:bg-brand-cyan hover:text-black text-white rounded-full flex items-center justify-center border border-white/20 backdrop-blur-md transition hover:scale-110"><i class="fa-solid fa-chevron-right"></i></button>
                         </div>
                     </div>
-                    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-4 z-20">
-                        <button id="prev-hero" class="w-14 h-14 bg-black/30 hover:bg-brand-cyan hover:text-black text-white rounded-full flex items-center justify-center border border-white/20 backdrop-blur-md transition hover:scale-110"><i class="fa-solid fa-chevron-left text-xl"></i></button>
-                        <button id="next-hero" class="w-14 h-14 bg-black/30 hover:bg-brand-cyan hover:text-black text-white rounded-full flex items-center justify-center border border-white/20 backdrop-blur-md transition hover:scale-110"><i class="fa-solid fa-chevron-right text-xl"></i></button>
+
+                    <div class="lg:col-span-1 relative bg-black rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10 group h-[60vh] lg:h-full">
+                        <div id="hero-portrait-container" class="w-full h-full relative">
+                            <div class="w-full h-full flex items-center justify-center bg-gray-900 text-gray-500 animate-pulse">
+                                Loading Shorts...
+                            </div>
+                        </div>
+                        <div class="absolute top-8 right-8 flex gap-4 z-20">
+                            <button id="prev-port" class="w-10 h-10 bg-black/30 hover:bg-brand-purple hover:text-white text-white rounded-full flex items-center justify-center border border-white/20 backdrop-blur-md transition hover:scale-110"><i class="fa-solid fa-chevron-left"></i></button>
+                            <button id="next-port" class="w-10 h-10 bg-black/30 hover:bg-brand-purple hover:text-white text-white rounded-full flex items-center justify-center border border-white/20 backdrop-blur-md transition hover:scale-110"><i class="fa-solid fa-chevron-right"></i></button>
+                        </div>
                     </div>
+
                 </div>
             </div>
 
@@ -194,7 +207,7 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16 reveal">
                 <h2 class="text-sm font-bold tracking-[0.2em] text-brand-gold uppercase mb-2">Our Arsenal</h2>
-                <p class="text-gray-400">We use industry-standard tools and technologies to bring ideas to life.</p>
+                <p class="text-gray-400">Precision tools for infinite creation.</p>
             </div>
             
             <div class="grid grid-cols-2 md:grid-cols-3 gap-y-16 gap-x-8 text-center reveal">
@@ -239,13 +252,11 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 reveal">
-                
                 <div class="bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-md h-full flex flex-col">
                     <div class="mb-6 pb-6 border-b border-white/10">
                         <h3 class="text-2xl font-bold font-display text-white mb-1"><i class="fa-solid fa-calculator text-brand-gold mr-2"></i> Project Estimator</h3>
                         <p class="text-xs text-gray-400 mt-2">* This figure is an estimate, for a detailed breakdown please contact us.</p>
                     </div>
-
                     <div class="space-y-6 flex-grow">
                         <div>
                             <label class="block text-xs font-bold text-brand-cyan uppercase tracking-widest mb-2">Project Category</label>
@@ -259,12 +270,10 @@
                                 <option value="web">Website Development</option>
                             </select>
                         </div>
-
                         <div id="calc-service-group" class="hidden opacity-0 transition-opacity duration-500">
                             <label class="block text-xs font-bold text-brand-cyan uppercase tracking-widest mb-2">Specific Service</label>
                             <select id="calc-service" class="w-full rounded-lg p-3 cursor-pointer"></select>
                         </div>
-
                         <div id="calc-scope-group" class="hidden opacity-0 transition-opacity duration-500">
                             <label class="block text-xs font-bold text-brand-cyan uppercase tracking-widest mb-2">Complexity / Scope</label>
                             <div class="grid grid-cols-3 gap-2">
@@ -274,7 +283,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div id="calc-result" class="mt-8 pt-6 border-t border-white/10 hidden">
                         <p class="text-gray-400 text-xs uppercase tracking-widest mb-1">Estimated Cost</p>
                         <div class="text-4xl font-bold font-display text-brand-gold mb-4">₹ <span id="price-display">0</span></div>
@@ -303,7 +311,6 @@
                             </div>
                         </div>
                     </div>
-                    
                     <div class="mt-6">
                         <button id="contactSubmit" class="w-full py-4 bg-white text-black font-bold rounded-lg hover:bg-brand-cyan transition uppercase tracking-widest text-sm disabled:opacity-50">
                             Send Message
@@ -311,7 +318,6 @@
                         <div id="formNotice" class="mt-4 text-center text-sm font-bold hidden"></div>
                     </div>
                 </form>
-
             </div>
         </div>
     </section>
@@ -335,15 +341,29 @@
             fetch('content.json')
                 .then(res => res.json())
                 .then(data => {
-                    if(data.hero_slides) initHero(data.hero_slides);
+                    // Initialize Landscape
+                    if(data.hero_slides) initLandscapeHero(data.hero_slides);
+                    
+                    // Initialize Portrait (Check if key exists, otherwise use fallback)
+                    if(data.portrait_slides) {
+                        initPortraitHero(data.portrait_slides);
+                    } else {
+                        // Fallback if portrait_slides is missing in JSON
+                        document.getElementById('hero-portrait-container').innerHTML = `
+                            <div class="flex items-center justify-center h-full text-center p-4 text-gray-500">
+                                <p class="text-xs">Update JSON with "portrait_slides"</p>
+                            </div>
+                        `;
+                    }
+
                     if(data.moments_gallery) initGallery(data.moments_gallery);
                     if(data.youtube_videos) initYoutube(data.youtube_videos);
                 })
                 .catch(err => console.error("JSON Error:", err));
 
-            // --- HERO VIDEO LOGIC ---
-            function initHero(slides) {
-                const container = document.getElementById('hero-video-container');
+            // --- LANDSCAPE HERO LOGIC (16:9) ---
+            function initLandscapeHero(slides) {
+                const container = document.getElementById('hero-landscape-container');
                 let idx = 0;
                 function render(i) {
                     if(i < 0) i = slides.length - 1;
@@ -362,8 +382,32 @@
                     `;
                 }
                 render(0);
-                document.getElementById('prev-hero').onclick = () => render(idx - 1);
-                document.getElementById('next-hero').onclick = () => render(idx + 1);
+                document.getElementById('prev-land').onclick = () => render(idx - 1);
+                document.getElementById('next-land').onclick = () => render(idx + 1);
+            }
+
+            // --- PORTRAIT HERO LOGIC (9:16) ---
+            function initPortraitHero(slides) {
+                const container = document.getElementById('hero-portrait-container');
+                let idx = 0;
+                function render(i) {
+                    if(i < 0) i = slides.length - 1;
+                    if(i >= slides.length) i = 0;
+                    idx = i;
+                    const slide = slides[idx];
+                    container.innerHTML = `
+                        <video class="w-full h-full object-cover" autoplay muted loop playsinline poster="${slide.poster_path || ''}">
+                            <source src="${slide.video_path}" type="video/mp4">
+                        </video>
+                        <div class="absolute bottom-8 left-0 w-full p-4 bg-gradient-to-t from-black to-transparent z-10">
+                            <h3 class="text-lg font-bold font-display text-white leading-tight">${slide.title}</h3>
+                            <p class="text-brand-purple text-[10px] font-bold uppercase tracking-widest mt-1">${slide.subtitle}</p>
+                        </div>
+                    `;
+                }
+                render(0);
+                document.getElementById('prev-port').onclick = () => render(idx - 1);
+                document.getElementById('next-port').onclick = () => render(idx + 1);
             }
 
             // --- GALLERY LOGIC ---
@@ -419,38 +463,14 @@
                 }).join('');
             }
 
-            // --- PRICING CALCULATOR LOGIC ---
+            // --- PRICING CALCULATOR LOGIC (SAME AS BEFORE) ---
             const pricingData = {
-                "game": {
-                    "full_2d": { label: "Full Game (2D)", base: 100000 },
-                    "full_3d": { label: "Full Game (3D)", base: 250000 },
-                    "prototype": { label: "Core Loop Prototype", base: 50000 },
-                    "env_art": { label: "Environment Art", base: 20000 },
-                    "testing": { label: "Game Testing/QA", base: 10000 }
-                },
-                "vr_ar": {
-                    "vr_exp": { label: "VR Experience", base: 50000 },
-                    "ar_app": { label: "AR Application", base: 45000 },
-                    "training": { label: "Training Simulation", base: 60000 }
-                },
-                "3d_art": {
-                    "model": { label: "3D Modeling", base: 10000 },
-                    "texture": { label: "Texturing", base: 5000 },
-                    "rig": { label: "Rigging", base: 5000 }
-                },
-                "animation": {
-                    "basic": { label: "Basic Animation (per min)", base: 15000 },
-                    "mocap": { label: "Mocap Cleanup", base: 20000 }
-                },
-                "ai": {
-                    "shorts": { label: "AI Shorts/Reels", base: 5000 },
-                    "film": { label: "Cinematic Film", base: 25000 },
-                    "ad": { label: "AI Advertising", base: 15000 }
-                },
-                "web": {
-                    "landing": { label: "Landing Page", base: 15000 },
-                    "full": { label: "Full Website", base: 35000 }
-                }
+                "game": { "full_2d": { label: "Full Game (2D)", base: 100000 }, "full_3d": { label: "Full Game (3D)", base: 250000 }, "prototype": { label: "Core Loop Prototype", base: 50000 }, "env_art": { label: "Environment Art", base: 20000 }, "testing": { label: "Game Testing/QA", base: 10000 } },
+                "vr_ar": { "vr_exp": { label: "VR Experience", base: 50000 }, "ar_app": { label: "AR Application", base: 45000 }, "training": { label: "Training Simulation", base: 60000 } },
+                "3d_art": { "model": { label: "3D Modeling", base: 10000 }, "texture": { label: "Texturing", base: 5000 }, "rig": { label: "Rigging", base: 5000 } },
+                "animation": { "basic": { label: "Basic Animation (per min)", base: 15000 }, "mocap": { label: "Mocap Cleanup", base: 20000 } },
+                "ai": { "shorts": { label: "AI Shorts/Reels", base: 5000 }, "film": { label: "Cinematic Film", base: 25000 }, "ad": { label: "AI Advertising", base: 15000 } },
+                "web": { "landing": { label: "Landing Page", base: 15000 }, "full": { label: "Full Website", base: 35000 } }
             };
 
             const catSelect = document.getElementById('calc-category');
@@ -463,11 +483,9 @@
             let currentBasePrice = 0;
             let currentMultiplier = 1;
 
-            // 1. Category Changed
             catSelect.addEventListener('change', function() {
                 const cat = this.value;
-                servSelect.innerHTML = '<option value="">Select Service...</option>'; // Reset
-                
+                servSelect.innerHTML = '<option value="">Select Service...</option>';
                 if(cat && pricingData[cat]) {
                     const services = pricingData[cat];
                     for (const [key, val] of Object.entries(services)) {
@@ -485,13 +503,11 @@
                 }
             });
 
-            // 2. Service Changed
             servSelect.addEventListener('change', function() {
                 if(this.value) {
                     currentBasePrice = parseInt(this.value);
                     scopeGroup.classList.remove('hidden');
                     setTimeout(() => scopeGroup.classList.remove('opacity-0'), 50);
-                    // Reset multiplier selection
                     document.querySelectorAll('.scope-btn').forEach(b => {
                         b.classList.remove('bg-brand-cyan', 'text-black', 'border-transparent');
                         b.classList.add('border-white/10', 'text-white');
@@ -500,29 +516,22 @@
                 }
             });
 
-            // 3. Scope Clicked
             document.querySelectorAll('.scope-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
-                    // UI State
                     document.querySelectorAll('.scope-btn').forEach(b => {
                         b.classList.remove('bg-brand-cyan', 'text-black', 'border-transparent');
                         b.classList.add('border-white/10', 'text-white');
                     });
                     this.classList.remove('border-white/10', 'text-white');
                     this.classList.add('bg-brand-cyan', 'text-black', 'border-transparent');
-
-                    // Calculation
                     currentMultiplier = parseInt(this.dataset.multiplier);
                     const total = currentBasePrice * currentMultiplier;
-                    
-                    // Display
                     priceDisplay.innerText = total.toLocaleString('en-IN');
                     resultArea.classList.remove('hidden');
                 });
             });
 
-
-            // --- FORMSPREE AJAX HANDLER ---
+            // --- FORMSPREE AJAX ---
             const form = document.getElementById("contactForm");
             const submitBtn = document.getElementById("contactSubmit");
             const notice = document.getElementById("formNotice");
@@ -533,7 +542,6 @@
                 submitBtn.innerText = "Sending...";
                 submitBtn.disabled = true;
                 notice.classList.add("hidden");
-
                 try {
                     const data = new FormData(event.target);
                     const response = await fetch(event.target.action, {
@@ -541,7 +549,6 @@
                         body: data,
                         headers: { 'Accept': 'application/json' }
                     });
-
                     if (response.ok) {
                         form.reset();
                         notice.innerText = "Thanks! We have received your message.";
@@ -563,7 +570,6 @@
                 }
             }
             form.addEventListener("submit", handleSubmit);
-
         });
 
         // --- SECURITY ---
