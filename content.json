@@ -1,6 +1,11 @@
 {
   "hero_slides": [
     {
+      "title": "Ramayana: Sundarakanda",
+      "subtitle": "Hanuman's Leap Across the ocean to find Maa Sita",
+      "video_id": "f-gvzSG9d9E"
+    },
+    {
       "title": "Immersive VR worlds",
       "subtitle": "Worlds of Narayana",
       "video_path": "assets/hero3.mp4"
@@ -12,6 +17,11 @@
     }
   ],
   "portrait_slides": [
+    {
+      "title": "Ramayana: Sundarakanda Trailer",
+      "subtitle": "Hannuman's Journey across the ocean",
+      "video_path": "assets/Trailer.mp4"
+    },
     {
       "title": "Sadvidya Chandogya Upanishad",
       "subtitle": "Unreal Cinematic",
