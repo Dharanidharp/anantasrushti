@@ -1,24 +1,25 @@
 {
   "hero_slides": [
     {
-      "title": "Ramayana: Sundarakanda",
+      "title": "Ramayana: Sundarakanda AI Cinematic",
       "subtitle": "Hanuman's Leap Across the ocean to find Maa Sita",
       "video_id": "f-gvzSG9d9E"
     },
     {
       "title": "Immersive VR worlds",
-      "subtitle": "Worlds of Narayana",
+      "subtitle": "Worlds of Narayana: Unreal Engine 5 | Blueprints",
       "video_path": "assets/hero3.mp4"
     },
     {
       "title": "Tales from Bharata",
-      "subtitle": "Combat Gameplay",
+      "subtitle": "Combat Gameplay: Unreal Engine 5 | C++ | Blueprints",
       "video_path": "assets/hero1.mp4"
     }
   ],
   "portrait_slides": [
     {
       "title": "Mighty Orb Gameplay iOS",
+      "subtitle": "Unity | C#",
       "video_id": "u-RPmFF4v24"
     },
     {
