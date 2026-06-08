@@ -1,9 +1,9 @@
 {
   "hero_slides": [
     {
-      "title": "Ramayana: Sundarakanda AI Cinematic",
-      "subtitle": "Hanuman's Leap Across the ocean to find Maa Sita",
-      "video_id": "q8lGqfACRwA"
+      "title": "Tales from Bharata",
+      "subtitle": "Combat Gameplay: Unreal Engine 5 | C++ | Blueprints",
+      "video_path": "assets/hero1.mp4"
     },
     {
       "title": "Immersive VR worlds",
@@ -11,9 +11,9 @@
       "video_path": "assets/hero3.mp4"
     },
     {
-      "title": "Tales from Bharata",
-      "subtitle": "Combat Gameplay: Unreal Engine 5 | C++ | Blueprints",
-      "video_path": "assets/hero1.mp4"
+      "title": "Ramayana: Sundarakanda AI Cinematic",
+      "subtitle": "Hanuman's Leap Across the ocean to find Maa Sita",
+      "video_id": "q8lGqfACRwA"
     }
   ],
   "portrait_slides": [
