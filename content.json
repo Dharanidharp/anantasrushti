@@ -2,7 +2,7 @@
   "hero_slides": [ 
     {
       "title": "Worlds of Narayana VR | Wishlist Now on Steam",
-      "subtitle": "Hanuman's Leap Across the ocean to find Maa Sita",
+      "subtitle": "Immersive VR experience | Unreal Engine 5 | Steam | Meta Quest 3",
       "video_id": "DdyjFPr5b8w"
     },
     {
@@ -70,6 +70,10 @@
   ],
   "youtube_videos": [
     {
+      "title": "Augmented Reality Experience at Statue of Equality. Built using Unity and AR Foundation for iOS",
+      "video_id": "ig_AZ-V5_dQ"
+    },
+    {
       "title": "Tales from Bharata - Combat Gameplay. Built using Unreal Engine 5",
       "video_id": "qckMso0fY40" 
     },
@@ -78,12 +82,8 @@
       "video_id": "wWYD0EQPc8s"
     },
     {
-      "title": "The story of Arjuna | Battle for Pashupatastra",
+      "title": "The Story of Arjuna | Battle for Pashupatastra",
       "video_id": "dJz4ayS-8iA"
-    },
-    {
-      "title": "Augmented Reality Experience at Statue of Equality. Built using Unity and AR Foundation for iOS",
-      "video_id": "ig_AZ-V5_dQ"
     }
   ] 
 }
