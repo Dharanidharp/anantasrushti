@@ -1,19 +1,24 @@
 {
-  "hero_slides": [
+  "hero_slides": [ 
+    {
+      "title": "Worlds of Narayana VR | Wishlist Now on Steam",
+      "subtitle": "Hanuman's Leap Across the ocean to find Maa Sita",
+      "video_id": "DdyjFPr5b8w"
+    },
     {
       "title": "Tales from Bharata",
       "subtitle": "Combat Gameplay: Unreal Engine 5 | C++ | Blueprints",
       "video_path": "assets/hero1.mp4"
     },
     {
-      "title": "Immersive VR worlds",
-      "subtitle": "Worlds of Narayana: Unreal Engine 5 | Blueprints",
-      "video_path": "assets/hero3.mp4"
-    },
-    {
       "title": "Ramayana: Sundarakanda AI Cinematic",
       "subtitle": "Hanuman's Leap Across the ocean to find Maa Sita",
       "video_id": "q8lGqfACRwA"
+    },
+    {
+      "title": "Immersive VR worlds",
+      "subtitle": "Worlds of Narayana: Unreal Engine 5 | Blueprints",
+      "video_path": "assets/hero3.mp4"
     }
   ],
   "portrait_slides": [
@@ -69,12 +74,16 @@
       "video_id": "qckMso0fY40" 
     },
     {
-      "title": "AI Content Creation - Sundarakanda. From hand-drawn sketch to a cinematic, keeping the human artistic vision intact",
-      "video_id": "M3d-yxooBKI"
+      "title": "Worlds of Narayana | Ksheerasaagaram | Wishlist Now on Steam",
+      "video_id": "wWYD0EQPc8s"
+    },
+    {
+      "title": "The story of Arjuna | Battle for Pashupatastra",
+      "video_id": "dJz4ayS-8iA"
     },
     {
       "title": "Augmented Reality Experience at Statue of Equality. Built using Unity and AR Foundation for iOS",
       "video_id": "ig_AZ-V5_dQ"
     }
-  ]
+  ] 
 }
